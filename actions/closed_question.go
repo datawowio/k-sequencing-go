@@ -1,17 +1,20 @@
 package actions
 
-import "net/http"
+import (
+	"net/http"
+
+	"github.com/datawowio/k-sequencing-go/config"
+)
 
 // GetClosedQuestion ...
 type GetClosedQuestion struct {
-	ProjectKey string
-	ID         string
-	CustomID   string
+	ID       string
+	CustomID string
 }
 
 // Endpoint ...
-func (*GetClosedQuestion) Endpoint() (string, string) {
-	return "GET", "/api/images/closed_question"
+func (*GetClosedQuestion) Endpoint() (string, string, string) {
+	return config.LocalAPI, "GET", "/api/images/closed_question"
 }
 
 // Payload ...

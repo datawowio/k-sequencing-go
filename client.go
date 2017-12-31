@@ -10,35 +10,8 @@ import (
 )
 
 const (
-	ProjectKey    = "A7sRxaQKxo2hRQzNwkk5Qqx4"
-	LocalEndpoint = "http://localhost:3001"
+	ProjectKey = "A7sRxaQKxo2hRQzNwkk5Qqx4"
 )
-
-type Response struct {
-	Data Data `json:"data"`
-	Meta Meta `json:"meta"`
-}
-
-type Image struct {
-	ID            string `json:"id"`
-	Answer        string `json:"answer"`
-	CreditCharged int    `json:"credit_charged"`
-	CustomID      string `json:"custom_id"`
-	Source        string `json:"data"`
-	PostbackUrl   string `json:"postback_url"`
-	ProcessedAt   string `json:"processed_at"`
-	ProjectID     int    `json:"project_id"`
-	Status        string `json:"status"`
-}
-
-type Meta struct {
-	Code    int    `json:"code"`
-	Message string `json:"message"`
-}
-
-type Data struct {
-	Image Image `json:"image"`
-}
 
 type Client struct {
 	*http.Client
@@ -50,8 +23,8 @@ func NewClient(projectKey string) *Client {
 }
 
 func (c *Client) Call(result interface{}, act actions.Action) error {
-	method, path := act.Endpoint()
-	req, e := http.NewRequest(method, string(LocalEndpoint)+path, nil)
+	endpoint, method, path := act.Endpoint()
+	req, e := http.NewRequest(method, string(endpoint)+path, nil)
 	if e != nil {
 		return e
 	}
@@ -83,13 +56,13 @@ func (c *Client) Call(result interface{}, act actions.Action) error {
 
 func main() {
 	c := NewClient(ProjectKey)
-	data, getImage := &Response{}, &actions.GetClosedQuestion{
+	closedQuestion, getImage := &ClosedQuestion{}, &actions.GetClosedQuestion{
 		ID: "5a44671ab3957c2ab5c33326",
 	}
 
-	if e := c.Call(data, getImage); e != nil {
+	if e := c.Call(closedQuestion, getImage); e != nil {
 		log.Fatal(e)
 	}
-	log.Println(data.Data.Image.Answer)
-	log.Println(data.Meta.Code)
+	log.Println(closedQuestion.Data.Image.Answer)
+	log.Println(closedQuestion.Meta.Code)
 }

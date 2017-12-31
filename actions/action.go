@@ -4,6 +4,6 @@ import "net/http"
 
 // Action ...
 type Action interface {
-	Endpoint() (string, string)
+	Endpoint() (string, string, string)
 	Payload(*http.Request)
 }
