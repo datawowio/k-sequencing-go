@@ -20,7 +20,7 @@ func TestClient_Call(t *testing.T) {
 	c := NewClient(TestProjectKey)
 	a.NotNil(t, c)
 
-	closedQuestion, getImage := &ClosedQuestion{}, &actions.GetClosedQuestion{
+	closedQuestion, getImage := &GetClosedQuestion{}, &actions.GetClosedQuestion{
 		ID: "5a44671ab3957c2ab5c33326",
 	}
 
@@ -37,7 +37,7 @@ func TestClient_InvalidCall(t *testing.T) {
 	c := NewClient(TestProjectKey)
 	a.NotNil(t, c)
 
-	closedQuestion, getImage := &ClosedQuestion{}, &actions.GetClosedQuestion{}
+	closedQuestion, getImage := &GetClosedQuestion{}, &actions.GetClosedQuestion{}
 
 	e := c.Call(closedQuestion, getImage)
 	a.EqualError(t, e, "Error occurred from API side")
