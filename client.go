@@ -30,7 +30,11 @@ func (c *Client) setHeaders(req *http.Request) {
 }
 
 func (c *Client) Call(result interface{}, act actions.Action) error {
-	req := act.Payload()
+	endpoint, method, path := act.Endpoint()
+	req, err := act.Payload(endpoint, method, path)
+	if err != nil {
+		return err
+	}
 	c.setHeaders(req)
 
 	resp, e := c.Client.Do(req)

@@ -34,7 +34,8 @@ func TestGetPayload(t *testing.T) {
 		ID:       "5a44671ab3957c2ab5c33326",
 		CustomID: "5022342340",
 	}
-	req := g.Payload()
+	endpoint, method, path := g.Endpoint()
+	req, _ := g.Payload(endpoint, method, path)
 	queryValues := req.URL.Query()
 	a.Equal(t, g.ID, queryValues.Get("id"))
 	a.Equal(t, g.CustomID, queryValues.Get("custom_id"))
@@ -44,6 +45,7 @@ func TestPostPayload(t *testing.T) {
 	p := &PostClosedQuestion{
 		Data: "https://assets-cdn.github.com/images/modules/open_graph/github-mark.png",
 	}
-	req := p.Payload()
+	endpoint, method, path := p.Endpoint()
+	req, _ := p.Payload(endpoint, method, path)
 	a.NotNil(t, req)
 }

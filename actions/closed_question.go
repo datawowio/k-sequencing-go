@@ -33,9 +33,11 @@ func (*PostClosedQuestion) Endpoint() (string, string, string) {
 }
 
 // Payload ...
-func (g *GetClosedQuestion) Payload() *http.Request {
-	endpoint, method, path := g.Endpoint()
-	req, _ := http.NewRequest(method, string(endpoint)+path, nil)
+func (g *GetClosedQuestion) Payload(endpoint, method, path string) (*http.Request, error) {
+	req, err := http.NewRequest(method, string(endpoint)+path, nil)
+	if err != nil {
+		return nil, err
+	}
 	q := req.URL.Query()
 	if g.ID != "" {
 		q.Add("id", g.ID)
@@ -44,10 +46,10 @@ func (g *GetClosedQuestion) Payload() *http.Request {
 		q.Add("custom_id", g.CustomID)
 	}
 	req.URL.RawQuery = q.Encode()
-	return req
+	return req, nil
 }
 
-func (p *PostClosedQuestion) Payload() *http.Request {
+func (p *PostClosedQuestion) Payload(endpoint, method, path string) (*http.Request, error) {
 	values := url.Values{}
 	if p.Data != "" {
 		values.Set("data", p.Data)
@@ -64,7 +66,10 @@ func (p *PostClosedQuestion) Payload() *http.Request {
 	values.Add("staff_id", strconv.FormatInt(p.StaffID, 10))
 
 	body := strings.NewReader(values.Encode())
-	endpoint, method, path := p.Endpoint()
-	req, _ := http.NewRequest(method, string(endpoint)+path, body)
-	return req
+	req, err := http.NewRequest(method, string(endpoint)+path, body)
+	if err != nil {
+		return nil, err
+	}
+
+	return req, nil
 }
