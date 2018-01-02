@@ -86,6 +86,16 @@ func main() {
 	if e := c.Call(pClosedQuestion, postImage); e != nil {
 		log.Fatal(e)
 	}
-	fmt.Println(pClosedQuestion.Image)
+	log.Println(pClosedQuestion.Image)
 	log.Println(pClosedQuestion.Image.ID)
+
+	pChoice, postChoice := &PostChoice{}, &actions.PostChoice{
+		Instruction: "Instruction",
+		Categories:  []string{"Gnoon"},
+		Data:        "https://assets-cdn.github.com/images/modules/open_graph/github-mark.png",
+	}
+	if e := c.Call(pChoice, postChoice); e != nil {
+		log.Fatal(e)
+	}
+	fmt.Println(pChoice.Data)
 }
