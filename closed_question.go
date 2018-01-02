@@ -1,21 +1,21 @@
 package main
 
 type GetClosedQuestion struct {
-	Data Data `json:"data"`
-	Meta Meta `json:"meta"`
+	Data ClosedQuestionData `json:"data"`
+	Meta Meta               `json:"meta"`
 }
 
 type GetClosedQuestions struct {
-	Data Images `json:"data"`
-	Meta Meta   `json:"meta"`
+	Data ClosedQuestions `json:"data"`
+	Meta Meta            `json:"meta"`
 }
 
 type PostClosedQuestion struct {
-	Image Image `json:"data"`
-	Meta  Meta  `json:"meta"`
+	Data ClosedQuestion `json:"data"`
+	Meta Meta           `json:"meta"`
 }
 
-type Image struct {
+type ClosedQuestion struct {
 	ID            string `json:"id"`
 	Answer        string `json:"answer"`
 	CreditCharged int    `json:"credit_charged"`
@@ -27,15 +27,10 @@ type Image struct {
 	Status        string `json:"status"`
 }
 
-type Meta struct {
-	Code    int    `json:"code"`
-	Message string `json:"message"`
+type ClosedQuestions struct {
+	Images []ClosedQuestion `json:"images"`
 }
 
-type Images struct {
-	Images []Image `json:"images"`
-}
-
-type Data struct {
-	Image Image `json:"image"`
+type ClosedQuestionData struct {
+	Image ClosedQuestion `json:"image"`
 }

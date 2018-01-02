@@ -86,8 +86,8 @@ func main() {
 	if e := c.Call(pClosedQuestion, postImage); e != nil {
 		log.Fatal(e)
 	}
-	log.Println(pClosedQuestion.Image)
-	log.Println(pClosedQuestion.Image.ID)
+	log.Println(pClosedQuestion.Data)
+	log.Println(pClosedQuestion.Data.ID)
 
 	pChoice, postChoice := &PostChoice{}, &actions.PostChoice{
 		Instruction: "Instruction",
@@ -97,5 +97,5 @@ func main() {
 	if e := c.Call(pChoice, postChoice); e != nil {
 		log.Fatal(e)
 	}
-	fmt.Println(pChoice.Data)
+	fmt.Println(pChoice.Data.Source)
 }

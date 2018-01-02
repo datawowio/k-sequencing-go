@@ -32,9 +32,9 @@ type Choice struct {
 }
 
 type Choices struct {
-	Choices []Choice `json:"choices"`
+	Images []Choice `json:"images"`
 }
 
 type ChoiceData struct {
-	Choice Choice `json:"choice"`
+	Image Choice `json:"image"`
 }
