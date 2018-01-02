@@ -5,6 +5,11 @@ type GetClosedQuestion struct {
 	Meta Meta `json:"meta"`
 }
 
+type GetClosedQuestions struct {
+	Data Images `json:"data"`
+	Meta Meta   `json:"meta"`
+}
+
 type PostClosedQuestion struct {
 	Image Image `json:"data"`
 	Meta  Meta  `json:"meta"`
@@ -25,6 +30,10 @@ type Image struct {
 type Meta struct {
 	Code    int    `json:"code"`
 	Message string `json:"message"`
+}
+
+type Images struct {
+	Images []Image `json:"images"`
 }
 
 type Data struct {

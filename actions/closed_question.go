@@ -15,6 +15,12 @@ type GetClosedQuestion struct {
 	CustomID string
 }
 
+type GetClosedQuestions struct {
+	ID   string
+	Page string
+	Item string
+}
+
 type PostClosedQuestion struct {
 	Data           string
 	PostbackURL    string
@@ -26,6 +32,10 @@ type PostClosedQuestion struct {
 // Endpoint ...
 func (*GetClosedQuestion) Endpoint() (string, string, string) {
 	return config.LocalAPI, "GET", "/api/images/closed_question"
+}
+
+func (*GetClosedQuestions) Endpoint() (string, string, string) {
+	return config.LocalAPI, "GET", "/api/images/closed_questions"
 }
 
 func (*PostClosedQuestion) Endpoint() (string, string, string) {
@@ -44,6 +54,25 @@ func (g *GetClosedQuestion) Payload(endpoint, method, path string) (*http.Reques
 	}
 	if g.CustomID != "" {
 		q.Add("custom_id", g.CustomID)
+	}
+	req.URL.RawQuery = q.Encode()
+	return req, nil
+}
+
+func (g *GetClosedQuestions) Payload(endpoint, method, path string) (*http.Request, error) {
+	req, err := http.NewRequest(method, string(endpoint)+path, nil)
+	if err != nil {
+		return nil, err
+	}
+	q := req.URL.Query()
+	if g.ID != "" {
+		q.Add("id", g.ID)
+	}
+	if g.Page != "" {
+		q.Add("page", g.Page)
+	}
+	if g.Item != "" {
+		q.Add("per_page", g.Item)
 	}
 	req.URL.RawQuery = q.Encode()
 	return req, nil
