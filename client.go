@@ -98,4 +98,23 @@ func main() {
 		log.Fatal(e)
 	}
 	fmt.Println(pChoice.Data.Source)
+
+	pm, postMsg := &PostMessage{}, &actions.PostMessage{
+		Instruction: "Some instruction",
+		Data:        "https://assets-cdn.github.com/images/modules/open_graph/github-mark.png",
+	}
+	if e := c.Call(pm, postMsg); e != nil {
+		log.Fatal(e)
+	}
+	log.Println(pm.Data)
+
+	m, getMsg := &GetMessages{}, &actions.GetMessages{
+		ID: "5a4c982402bc7141ad009dbb",
+	}
+
+	if e := c.Call(m, getMsg); e != nil {
+		log.Fatal(e)
+	}
+	log.Println(m.Data.Images[0].ID)
+	log.Println(m.Meta.Code)
 }
