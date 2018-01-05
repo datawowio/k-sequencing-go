@@ -1,4 +1,4 @@
-package main
+package kseq
 
 type GetMessage struct {
 	Data MessageData `json:"data"`

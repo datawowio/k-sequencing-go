@@ -1,4 +1,4 @@
-package main
+package kseq
 
 type GetPrediction struct {
 	Data PredictionData `json:"data"`

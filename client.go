@@ -1,9 +1,8 @@
-package main
+package kseq
 
 import (
 	"encoding/json"
 	"errors"
-	"fmt"
 	"io/ioutil"
 	"log"
 	"net/http"
@@ -49,7 +48,6 @@ func (c *Client) Call(result interface{}, act actions.Action) error {
 	if e != nil {
 		log.Println("Error while reading response body")
 	}
-	// fmt.Println("resp:", resp.StatusCode, string(buffer))
 
 	switch {
 	case e != nil:
@@ -66,55 +64,4 @@ func (c *Client) Call(result interface{}, act actions.Action) error {
 	}
 
 	return nil
-}
-
-func main() {
-	c := NewClient(ProjectKey)
-	closedQuestion, getImage := &GetClosedQuestion{}, &actions.GetClosedQuestion{
-		ID: "5a44671ab3957c2ab5c33326",
-	}
-
-	if e := c.Call(closedQuestion, getImage); e != nil {
-		log.Fatal(e)
-	}
-	log.Println(closedQuestion.Data.Image.Answer)
-	log.Println(closedQuestion.Meta.Code)
-
-	pClosedQuestion, postImage := &PostClosedQuestion{}, &actions.PostClosedQuestion{
-		Data: "https://assets-cdn.github.com/images/modules/open_graph/github-mark.png",
-	}
-	if e := c.Call(pClosedQuestion, postImage); e != nil {
-		log.Fatal(e)
-	}
-	log.Println(pClosedQuestion.Data)
-	log.Println(pClosedQuestion.Data.ID)
-
-	pChoice, postChoice := &PostChoice{}, &actions.PostChoice{
-		Instruction: "Instruction",
-		Categories:  []string{"Gnoon"},
-		Data:        "https://assets-cdn.github.com/images/modules/open_graph/github-mark.png",
-	}
-	if e := c.Call(pChoice, postChoice); e != nil {
-		log.Fatal(e)
-	}
-	fmt.Println(pChoice.Data.Source)
-
-	pm, postMsg := &PostMessage{}, &actions.PostMessage{
-		Instruction: "Some instruction",
-		Data:        "https://assets-cdn.github.com/images/modules/open_graph/github-mark.png",
-	}
-	if e := c.Call(pm, postMsg); e != nil {
-		log.Fatal(e)
-	}
-	log.Println(pm.Data)
-
-	m, getMsg := &GetMessages{}, &actions.GetMessages{
-		ID: "5a4c982402bc7141ad009dbb",
-	}
-
-	if e := c.Call(m, getMsg); e != nil {
-		log.Fatal(e)
-	}
-	log.Println(m.Data.Images[0].ID)
-	log.Println(m.Meta.Code)
 }

@@ -1,4 +1,4 @@
-package main
+package kseq
 
 type GetPhotoTag struct {
 	Data PhotoTagData `json:"data"`

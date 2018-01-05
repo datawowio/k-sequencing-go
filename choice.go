@@ -1,4 +1,4 @@
-package main
+package kseq
 
 type GetChoice struct {
 	Data ChoiceData `json:"data"`

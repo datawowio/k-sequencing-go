@@ -1,4 +1,4 @@
-package main
+package kseq
 
 type GetClosedQuestion struct {
 	Data ClosedQuestionData `json:"data"`

@@ -1,4 +1,4 @@
-package main
+package kseq
 
 type Meta struct {
 	Code    int    `json:"code"`
