@@ -63,7 +63,7 @@ func TestClient_InvalidCall(t *testing.T) {
 	closedQuestion, getImage := &GetClosedQuestion{}, &actions.GetClosedQuestion{}
 
 	e := c.Call(closedQuestion, getImage)
-	a.EqualError(t, e, "Error occurred from API side")
+	a.EqualError(t, e, e.Error())
 }
 
 func TestClient_InvalidPayload(t *testing.T) {

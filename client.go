@@ -56,7 +56,7 @@ func (c *Client) Call(result interface{}, act actions.Action) error {
 	case e != nil:
 		return e
 	case resp.StatusCode != http.StatusOK && resp.StatusCode != http.StatusCreated:
-		err := errors.New("Error occurred from API side")
+		err := errors.New(resp.Status)
 		return err
 	}
 
