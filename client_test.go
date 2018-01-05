@@ -2,16 +2,19 @@ package kseq
 
 import (
 	"errors"
+	"fmt"
 	"net/http"
 	"testing"
 
 	"github.com/datawowio/k-sequencing-go/actions"
 	"github.com/datawowio/k-sequencing-go/config"
 	a "github.com/stretchr/testify/assert"
+	"gopkg.in/h2non/gock.v1"
 )
 
 const (
 	TestProjectKey = "A7sRxaQKxo2hRQzNwkk5Qqx4"
+	TestImageID    = "5a44671ab3957c2ab5c33326"
 )
 
 type mockPayload struct {
@@ -40,12 +43,20 @@ func TestNewClient_ErrorInvalidKey(t *testing.T) {
 }
 
 func TestClient_Call(t *testing.T) {
+	defer gock.Off()
 	c, _ := NewClient(TestProjectKey)
 	a.NotNil(t, c)
 
 	closedQuestion, getImage := &GetClosedQuestion{}, &actions.GetClosedQuestion{
-		ID: "5a44671ab3957c2ab5c33326",
+		ID: TestImageID,
 	}
+
+	endpoint, _, path := getImage.Endpoint()
+	mockResp := fmt.Sprintf(`{ "data": { "image": { "id": %q } } }`, TestImageID)
+	gock.New(endpoint).
+		Get(path).
+		Reply(200).
+		BodyString(mockResp)
 
 	e := c.Call(closedQuestion, getImage)
 	if !(a.NoError(t, e)) {
@@ -61,6 +72,11 @@ func TestClient_InvalidCall(t *testing.T) {
 	a.NotNil(t, c)
 
 	closedQuestion, getImage := &GetClosedQuestion{}, &actions.GetClosedQuestion{}
+
+	endpoint, _, path := getImage.Endpoint()
+	gock.New(endpoint).
+		Get(path).
+		Reply(401)
 
 	e := c.Call(closedQuestion, getImage)
 	a.EqualError(t, e, e.Error())
