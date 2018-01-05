@@ -19,8 +19,11 @@ type Client struct {
 	ProjectKey string
 }
 
-func NewClient(projectKey string) *Client {
-	return &Client{&http.Client{}, projectKey}
+func NewClient(projectKey string) (*Client, error) {
+	if projectKey == "" {
+		return nil, errors.New("invalid project key")
+	}
+	return &Client{&http.Client{}, projectKey}, nil
 }
 
 func (c *Client) setHeaders(req *http.Request) {

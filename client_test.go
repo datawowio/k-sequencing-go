@@ -28,12 +28,19 @@ func (m *mockPayload) Payload(endpoint, method, path string) (*http.Request, err
 }
 
 func TestNewClient(t *testing.T) {
-	c := NewClient(TestProjectKey)
+	c, err := NewClient(TestProjectKey)
+	a.Nil(t, err)
 	a.NotNil(t, c)
 }
 
+func TestNewClient_ErrorInvalidKey(t *testing.T) {
+	c, err := NewClient("")
+	a.NotNil(t, err)
+	a.Nil(t, c)
+}
+
 func TestClient_Call(t *testing.T) {
-	c := NewClient(TestProjectKey)
+	c, _ := NewClient(TestProjectKey)
 	a.NotNil(t, c)
 
 	closedQuestion, getImage := &GetClosedQuestion{}, &actions.GetClosedQuestion{
@@ -50,7 +57,7 @@ func TestClient_Call(t *testing.T) {
 }
 
 func TestClient_InvalidCall(t *testing.T) {
-	c := NewClient(TestProjectKey)
+	c, _ := NewClient(TestProjectKey)
 	a.NotNil(t, c)
 
 	closedQuestion, getImage := &GetClosedQuestion{}, &actions.GetClosedQuestion{}
@@ -60,7 +67,7 @@ func TestClient_InvalidCall(t *testing.T) {
 }
 
 func TestClient_InvalidPayload(t *testing.T) {
-	c := NewClient(TestProjectKey)
+	c, _ := NewClient(TestProjectKey)
 	a.NotNil(t, c)
 
 	m := &mockPayload{}
