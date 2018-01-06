@@ -30,15 +30,15 @@ type PostPhotoTag struct {
 }
 
 func (*GetPhotoTag) Endpoint() (string, string, string) {
-	return config.LocalAPI, "GET", "/api/images/photo_tag"
+	return config.GetEndpoint(), "GET", "/api/images/photo_tag"
 }
 
 func (*GetPhotoTags) Endpoint() (string, string, string) {
-	return config.LocalAPI, "GET", "/api/images/photo_tags"
+	return config.GetEndpoint(), "GET", "/api/images/photo_tags"
 }
 
 func (*PostPhotoTag) Endpoint() (string, string, string) {
-	return config.LocalAPI, "POST", "/api/images/photo_tags"
+	return config.GetEndpoint(), "POST", "/api/images/photo_tags"
 }
 
 func (g *GetPhotoTag) Payload(endpoint, method, path string) (*http.Request, error) {

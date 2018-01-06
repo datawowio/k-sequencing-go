@@ -31,15 +31,15 @@ type PostClosedQuestion struct {
 
 // Endpoint ...
 func (*GetClosedQuestion) Endpoint() (string, string, string) {
-	return config.LocalAPI, "GET", "/api/images/closed_question"
+	return config.GetEndpoint(), "GET", "/api/images/closed_question"
 }
 
 func (*GetClosedQuestions) Endpoint() (string, string, string) {
-	return config.LocalAPI, "GET", "/api/images/closed_questions"
+	return config.GetEndpoint(), "GET", "/api/images/closed_questions"
 }
 
 func (*PostClosedQuestion) Endpoint() (string, string, string) {
-	return config.LocalAPI, "POST", "/api/images/closed_questions"
+	return config.GetEndpoint(), "POST", "/api/images/closed_questions"
 }
 
 // Payload ...

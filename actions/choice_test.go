@@ -11,7 +11,7 @@ func TestPostChoiceEndpoint(t *testing.T) {
 	p := &PostChoice{}
 	endpoint, method, path := p.Endpoint()
 	a.NotNil(t, endpoint)
-	a.Equal(t, config.LocalAPI, endpoint)
+	a.Equal(t, config.API, endpoint)
 	a.NotNil(t, method)
 	a.Equal(t, "POST", method)
 	a.NotNil(t, path)
@@ -19,10 +19,10 @@ func TestPostChoiceEndpoint(t *testing.T) {
 }
 
 func TestGetChoicesEndpoint(t *testing.T) {
-	p := &GetChoices{}
-	endpoint, method, path := p.Endpoint()
+	g := &GetChoices{}
+	endpoint, method, path := g.Endpoint()
 	a.NotNil(t, endpoint)
-	a.Equal(t, config.LocalAPI, endpoint)
+	a.Equal(t, config.API, endpoint)
 	a.NotNil(t, method)
 	a.Equal(t, "GET", method)
 	a.NotNil(t, path)
@@ -30,10 +30,10 @@ func TestGetChoicesEndpoint(t *testing.T) {
 }
 
 func TestGetChoiceEndpoint(t *testing.T) {
-	p := &GetChoice{}
-	endpoint, method, path := p.Endpoint()
+	g := &GetChoice{}
+	endpoint, method, path := g.Endpoint()
 	a.NotNil(t, endpoint)
-	a.Equal(t, config.LocalAPI, endpoint)
+	a.Equal(t, config.API, endpoint)
 	a.NotNil(t, method)
 	a.Equal(t, "GET", method)
 	a.NotNil(t, path)

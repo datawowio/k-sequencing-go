@@ -8,10 +8,10 @@ import (
 )
 
 func TestGetMessagesEndpoint(t *testing.T) {
-	p := &GetMessages{}
-	endpoint, method, path := p.Endpoint()
+	g := &GetMessages{}
+	endpoint, method, path := g.Endpoint()
 	a.NotNil(t, endpoint)
-	a.Equal(t, config.LocalAPI, endpoint)
+	a.Equal(t, config.API, endpoint)
 	a.NotNil(t, method)
 	a.Equal(t, "GET", method)
 	a.NotNil(t, path)
@@ -19,10 +19,10 @@ func TestGetMessagesEndpoint(t *testing.T) {
 }
 
 func TestGetMessageEndpoint(t *testing.T) {
-	p := &GetMessage{}
-	endpoint, method, path := p.Endpoint()
+	g := &GetMessage{}
+	endpoint, method, path := g.Endpoint()
 	a.NotNil(t, endpoint)
-	a.Equal(t, config.LocalAPI, endpoint)
+	a.Equal(t, config.API, endpoint)
 	a.NotNil(t, method)
 	a.Equal(t, "GET", method)
 	a.NotNil(t, path)
@@ -30,10 +30,10 @@ func TestGetMessageEndpoint(t *testing.T) {
 }
 
 func TestPostMessage(t *testing.T) {
-	g := &PostMessage{}
-	endpoint, method, path := g.Endpoint()
+	p := &PostMessage{}
+	endpoint, method, path := p.Endpoint()
 	a.NotNil(t, endpoint)
-	a.Equal(t, config.LocalAPI, endpoint)
+	a.Equal(t, config.API, endpoint)
 	a.NotNil(t, method)
 	a.Equal(t, "POST", method)
 	a.NotNil(t, path)

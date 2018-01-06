@@ -33,15 +33,15 @@ type PostChoice struct {
 }
 
 func (*GetChoice) Endpoint() (string, string, string) {
-	return config.LocalAPI, "GET", "/api/images/choice"
+	return config.GetEndpoint(), "GET", "/api/images/choice"
 }
 
 func (*GetChoices) Endpoint() (string, string, string) {
-	return config.LocalAPI, "GET", "/api/images/choices"
+	return config.GetEndpoint(), "GET", "/api/images/choices"
 }
 
 func (*PostChoice) Endpoint() (string, string, string) {
-	return config.LocalAPI, "POST", "/api/images/choices"
+	return config.GetEndpoint(), "POST", "/api/images/choices"
 }
 
 func (g *GetChoice) Payload(endpoint, method, path string) (*http.Request, error) {

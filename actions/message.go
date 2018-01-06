@@ -30,15 +30,15 @@ type PostMessage struct {
 }
 
 func (*GetMessage) Endpoint() (string, string, string) {
-	return config.LocalAPI, "GET", "/api/images/message"
+	return config.GetEndpoint(), "GET", "/api/images/message"
 }
 
 func (*GetMessages) Endpoint() (string, string, string) {
-	return config.LocalAPI, "GET", "/api/images/messages"
+	return config.GetEndpoint(), "GET", "/api/images/messages"
 }
 
 func (*PostMessage) Endpoint() (string, string, string) {
-	return config.LocalAPI, "POST", "/api/images/messages"
+	return config.GetEndpoint(), "POST", "/api/images/messages"
 }
 
 func (g *GetMessage) Payload(endpoint, method, path string) (*http.Request, error) {

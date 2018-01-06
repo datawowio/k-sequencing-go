@@ -10,10 +10,6 @@ import (
 	"github.com/datawowio/k-sequencing-go/actions"
 )
 
-const (
-	ProjectKey = "A7sRxaQKxo2hRQzNwkk5Qqx4"
-)
-
 type Client struct {
 	*http.Client
 	ProjectKey string

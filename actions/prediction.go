@@ -27,15 +27,15 @@ type PostPrediction struct {
 }
 
 func (*GetPrediction) Endpoint() (string, string, string) {
-	return config.LocalAPI, "GET", "/api/prime/prediction"
+	return config.GetEndpoint(), "GET", "/api/prime/prediction"
 }
 
 func (*GetPredictions) Endpoint() (string, string, string) {
-	return config.LocalAPI, "GET", "/api/prime/predictions"
+	return config.GetEndpoint(), "GET", "/api/prime/predictions"
 }
 
 func (*PostPrediction) Endpoint() (string, string, string) {
-	return config.LocalAPI, "POST", "/api/prime/predictions"
+	return config.GetEndpoint(), "POST", "/api/prime/predictions"
 }
 
 func (g *GetPrediction) Payload(endpoint, method, path string) (*http.Request, error) {

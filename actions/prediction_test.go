@@ -8,10 +8,10 @@ import (
 )
 
 func TestGetPredictionTagEndpoint(t *testing.T) {
-	p := &GetPrediction{}
-	endpoint, method, path := p.Endpoint()
+	g := &GetPrediction{}
+	endpoint, method, path := g.Endpoint()
 	a.NotNil(t, endpoint)
-	a.Equal(t, config.LocalAPI, endpoint)
+	a.Equal(t, config.API, endpoint)
 	a.NotNil(t, method)
 	a.Equal(t, "GET", method)
 	a.NotNil(t, path)
@@ -19,10 +19,10 @@ func TestGetPredictionTagEndpoint(t *testing.T) {
 }
 
 func TestGetPredictionsPayload(t *testing.T) {
-	p := &GetPredictions{}
-	endpoint, method, path := p.Endpoint()
+	g := &GetPredictions{}
+	endpoint, method, path := g.Endpoint()
 	a.NotNil(t, endpoint)
-	a.Equal(t, config.LocalAPI, endpoint)
+	a.Equal(t, config.API, endpoint)
 	a.NotNil(t, method)
 	a.Equal(t, "GET", method)
 	a.NotNil(t, path)
@@ -30,10 +30,10 @@ func TestGetPredictionsPayload(t *testing.T) {
 }
 
 func TestPostPrediction(t *testing.T) {
-	g := &PostPrediction{}
-	endpoint, method, path := g.Endpoint()
+	p := &PostPrediction{}
+	endpoint, method, path := p.Endpoint()
 	a.NotNil(t, endpoint)
-	a.Equal(t, config.LocalAPI, endpoint)
+	a.Equal(t, config.API, endpoint)
 	a.NotNil(t, method)
 	a.Equal(t, "POST", method)
 	a.NotNil(t, path)

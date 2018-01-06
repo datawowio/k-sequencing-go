@@ -11,7 +11,7 @@ func TestGetClosedQuestionEndpoint(t *testing.T) {
 	g := &GetClosedQuestion{}
 	endpoint, method, path := g.Endpoint()
 	a.NotNil(t, endpoint)
-	a.Equal(t, config.LocalAPI, endpoint)
+	a.Equal(t, config.API, endpoint)
 	a.NotNil(t, method)
 	a.Equal(t, "GET", method)
 	a.NotNil(t, path)
@@ -22,7 +22,7 @@ func TestGetListClosedQuestionEndpoint(t *testing.T) {
 	g := &GetClosedQuestions{}
 	endpoint, method, path := g.Endpoint()
 	a.NotNil(t, endpoint)
-	a.Equal(t, config.LocalAPI, endpoint)
+	a.Equal(t, config.API, endpoint)
 	a.NotNil(t, method)
 	a.Equal(t, "GET", method)
 	a.NotNil(t, path)
@@ -30,10 +30,10 @@ func TestGetListClosedQuestionEndpoint(t *testing.T) {
 }
 
 func TestPostCloseQuestionEndpoint(t *testing.T) {
-	g := &PostClosedQuestion{}
-	endpoint, method, path := g.Endpoint()
+	p := &PostClosedQuestion{}
+	endpoint, method, path := p.Endpoint()
 	a.NotNil(t, endpoint)
-	a.Equal(t, config.LocalAPI, endpoint)
+	a.Equal(t, config.API, endpoint)
 	a.NotNil(t, method)
 	a.Equal(t, "POST", method)
 	a.NotNil(t, path)

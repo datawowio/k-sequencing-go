@@ -8,10 +8,10 @@ import (
 )
 
 func TestGetPhotoTagEndpoint(t *testing.T) {
-	p := &GetPhotoTag{}
-	endpoint, method, path := p.Endpoint()
+	g := &GetPhotoTag{}
+	endpoint, method, path := g.Endpoint()
 	a.NotNil(t, endpoint)
-	a.Equal(t, config.LocalAPI, endpoint)
+	a.Equal(t, config.API, endpoint)
 	a.NotNil(t, method)
 	a.Equal(t, "GET", method)
 	a.NotNil(t, path)
@@ -19,10 +19,10 @@ func TestGetPhotoTagEndpoint(t *testing.T) {
 }
 
 func TestGetPhotoTagsPayload(t *testing.T) {
-	p := &GetPhotoTags{}
-	endpoint, method, path := p.Endpoint()
+	g := &GetPhotoTags{}
+	endpoint, method, path := g.Endpoint()
 	a.NotNil(t, endpoint)
-	a.Equal(t, config.LocalAPI, endpoint)
+	a.Equal(t, config.API, endpoint)
 	a.NotNil(t, method)
 	a.Equal(t, "GET", method)
 	a.NotNil(t, path)
@@ -30,10 +30,10 @@ func TestGetPhotoTagsPayload(t *testing.T) {
 }
 
 func TestPostPhotoTag(t *testing.T) {
-	g := &PostPhotoTag{}
-	endpoint, method, path := g.Endpoint()
+	p := &PostPhotoTag{}
+	endpoint, method, path := p.Endpoint()
 	a.NotNil(t, endpoint)
-	a.Equal(t, config.LocalAPI, endpoint)
+	a.Equal(t, config.API, endpoint)
 	a.NotNil(t, method)
 	a.Equal(t, "POST", method)
 	a.NotNil(t, path)
