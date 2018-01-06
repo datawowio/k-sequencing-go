@@ -1,0 +1,21 @@
+{
+  "data": {
+    "images": [
+      {
+        "id": "5a44671ab3957c2ab5c33326",
+        "answer": "approved",
+        "credit_charged": 0,
+        "custom_id": null,
+        "data": "https://s3-ap-northeast-1.amazonaws.com/marinchat/uploads/user/6951939/profile_icon/veOSbIBCR.jpg",
+        "postback_url": "http://localhost:3000/projects",
+        "processed_at": "2017-11-16T10:10:56.282+07:00",
+        "project_id": 93,
+        "status": "processed"
+      }
+    ]
+  },
+  "meta": {
+    "code": 200,
+    "message": "success"
+  }
+}
