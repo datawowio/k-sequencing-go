@@ -15,7 +15,7 @@ func TestGetPredictionTagEndpoint(t *testing.T) {
 	a.NotNil(t, method)
 	a.Equal(t, "GET", method)
 	a.NotNil(t, path)
-	a.Equal(t, "/api/prime/prediction", path)
+	a.Equal(t, "/api/prime/predictions", path)
 }
 
 func TestGetPredictionsPayload(t *testing.T) {
@@ -42,14 +42,13 @@ func TestPostPrediction(t *testing.T) {
 
 func TestGetPredictionPayload(t *testing.T) {
 	g := &GetPrediction{
-		ID:       "5a44671ab3957c2ab5c33326",
-		CustomID: "5022342340",
+		ID: "5a44671ab3957c2ab5c33326",
 	}
 	endpoint, method, path := g.Endpoint()
-	req, _ := g.Payload(endpoint, method, path)
-	queryValues := req.URL.Query()
-	a.Equal(t, g.ID, queryValues.Get("id"))
-	a.Equal(t, g.CustomID, queryValues.Get("custom_id"))
+	req, err := g.Payload(endpoint, method, path)
+	a.Nil(t, err)
+	a.NotNil(t, req)
+	a.Contains(t, req.URL.Path, g.ID)
 }
 
 func TestGetListPredictionsPayload(t *testing.T) {

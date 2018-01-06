@@ -1,6 +1,7 @@
 package actions
 
 import (
+	"errors"
 	"net/http"
 	"net/url"
 	"strings"
@@ -9,8 +10,7 @@ import (
 )
 
 type GetPrediction struct {
-	ID       string
-	CustomID string
+	ID string
 }
 
 type GetPredictions struct {
@@ -27,7 +27,7 @@ type PostPrediction struct {
 }
 
 func (*GetPrediction) Endpoint() (string, string, string) {
-	return config.GetEndpoint(), "GET", "/api/prime/prediction"
+	return config.GetEndpoint(), "GET", "/api/prime/predictions"
 }
 
 func (*GetPredictions) Endpoint() (string, string, string) {
@@ -39,18 +39,13 @@ func (*PostPrediction) Endpoint() (string, string, string) {
 }
 
 func (g *GetPrediction) Payload(endpoint, method, path string) (*http.Request, error) {
-	req, err := http.NewRequest(method, string(endpoint)+path, nil)
+	if g.ID == "" {
+		return nil, errors.New("ID is required ")
+	}
+	req, err := http.NewRequest(method, string(endpoint)+path+"/"+g.ID, nil)
 	if err != nil {
 		return nil, err
 	}
-	q := req.URL.Query()
-	if g.ID != "" {
-		q.Add("id", g.ID)
-	}
-	if g.CustomID != "" {
-		q.Add("custom_id", g.CustomID)
-	}
-	req.URL.RawQuery = q.Encode()
 	return req, nil
 }
 
