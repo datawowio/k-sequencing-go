@@ -44,6 +44,8 @@ func main() {
 }
 ```
 
+See documentation on [godoc.org][1]
+
 # Development
 
 Set this environment variable for running code against `k-sequencing` locally.
@@ -52,6 +54,7 @@ export LOCAL_DEV=true
 ```
 
 [0]: http://datawow.io
+[1]: https://godoc.org/gopkg.in/datawowio/k-sequencing-go.v0
 
 # License
 
