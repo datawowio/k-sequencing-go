@@ -46,7 +46,7 @@ func main() {
 
 # Development
 
-Set this environment variable for testing code against `k-sequencing` locally.
+Set this environment variable for running code against `k-sequencing` locally.
 ```go
 export LOCAL_DEV=true
 ```

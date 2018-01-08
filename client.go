@@ -10,11 +10,14 @@ import (
 	"github.com/datawowio/k-sequencing-go/actions"
 )
 
+// Client is like a API Gateway for K-Sequencing. Client will let you call available
+// K-Sequencing's APIs. It will be used with action structures from actions sub-package.
 type Client struct {
 	*http.Client
 	ProjectKey string
 }
 
+// NewClient is used for creates and return a Client with given project key
 func NewClient(projectKey string) (*Client, error) {
 	if projectKey == "" {
 		return nil, errors.New("invalid project key")
@@ -22,11 +25,11 @@ func NewClient(projectKey string) (*Client, error) {
 	return &Client{&http.Client{}, projectKey}, nil
 }
 
-func (c *Client) setHeaders(req *http.Request) {
-	req.Header.Set("Authorization", c.ProjectKey)
-	req.Header.Set("Content-Type", "application/x-www-form-urlencoded")
-}
-
+// Call performs supplied operations against K-Sequencing's API and unmarshal response into
+// given action object.
+//
+// In successful case, result will contain 2 main objects, data and meta. (status code and
+// message) Failed case, response will contain an error message.
 func (c *Client) Call(result interface{}, act actions.Action) error {
 	endpoint, method, path := act.Endpoint()
 	req, err := act.Payload(endpoint, method, path)
@@ -63,4 +66,9 @@ func (c *Client) Call(result interface{}, act actions.Action) error {
 	}
 
 	return nil
+}
+
+func (c *Client) setHeaders(req *http.Request) {
+	req.Header.Set("Authorization", c.ProjectKey)
+	req.Header.Set("Content-Type", "application/x-www-form-urlencoded")
 }

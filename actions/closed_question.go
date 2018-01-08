@@ -9,18 +9,23 @@ import (
 	"github.com/datawowio/k-sequencing-go/config"
 )
 
-// GetClosedQuestion ...
+// GetClosedQuestion represents a Get Image Closed Question's Payload that required to
+// request the action.
 type GetClosedQuestion struct {
 	ID       string
 	CustomID string
 }
 
+// GetClosedQuestions represents a Get list of Image Closed Question's Payload that required
+// to request the action.
 type GetClosedQuestions struct {
 	ID   string
 	Page string
 	Item string
 }
 
+// PostClosedQuestion represents a Create Image Closed Question's Payload that required to
+// request the action.
 type PostClosedQuestion struct {
 	Data           string
 	PostbackURL    string
@@ -29,20 +34,26 @@ type PostClosedQuestion struct {
 	StaffID        int64
 }
 
-// Endpoint ...
+// Endpoint returns K Sequencing's request url, verb and endpoint for calling Get Image
+// Closed Question API.
 func (*GetClosedQuestion) Endpoint() (string, string, string) {
 	return config.GetEndpoint(), "GET", "/api/images/closed_question"
 }
 
+// Endpoint returns K Sequencing's request url, verb and endpoint for calling Get list of
+// Image Closed Question API.
 func (*GetClosedQuestions) Endpoint() (string, string, string) {
 	return config.GetEndpoint(), "GET", "/api/images/closed_questions"
 }
 
+// Endpoint returns K Sequencing's request url, verb and endpoint for calling Create Image
+// Closed Question API.
 func (*PostClosedQuestion) Endpoint() (string, string, string) {
 	return config.GetEndpoint(), "POST", "/api/images/closed_questions"
 }
 
-// Payload ...
+// Payload creates request's payload for Get Image Closed Question API. Returns http.Request
+// object which contains required query parameters.
 func (g *GetClosedQuestion) Payload(endpoint, method, path string) (*http.Request, error) {
 	req, err := http.NewRequest(method, string(endpoint)+path, nil)
 	if err != nil {
@@ -59,6 +70,8 @@ func (g *GetClosedQuestion) Payload(endpoint, method, path string) (*http.Reques
 	return req, nil
 }
 
+// Payload creates request's payload for Get list Image Closed Question API. Returns
+// http.Request which contains required query parameters.
 func (g *GetClosedQuestions) Payload(endpoint, method, path string) (*http.Request, error) {
 	req, err := http.NewRequest(method, string(endpoint)+path, nil)
 	if err != nil {
@@ -78,6 +91,8 @@ func (g *GetClosedQuestions) Payload(endpoint, method, path string) (*http.Reque
 	return req, nil
 }
 
+// Payload creates request's payload for Create Image Close Question API. Returns
+// http.Request which contains required query parameters.
 func (p *PostClosedQuestion) Payload(endpoint, method, path string) (*http.Request, error) {
 	values := url.Values{}
 	if p.Data != "" {

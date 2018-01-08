@@ -9,17 +9,22 @@ import (
 	"github.com/datawowio/k-sequencing-go/config"
 )
 
+// GetPhotoTag represents a Get Image Photo Tag's Payload that required to request the action.
 type GetPhotoTag struct {
 	ID       string
 	CustomID string
 }
 
+// GetPhotoTags represents a Get list of Image Photo Tags's Payload that required to request the
+// action.
 type GetPhotoTags struct {
 	ID   string
 	Page string
 	Item string
 }
 
+// PostPhotoTag represents a Create list of Image Photo Tag's Payload that required to request
+// the action.
 type PostPhotoTag struct {
 	Instruction    string
 	Data           string
@@ -29,18 +34,26 @@ type PostPhotoTag struct {
 	StaffID        int64
 }
 
+// Endpoint returns K Sequencing's request url, verb and endpoint for calling Get Image
+// Photo Tag API.
 func (*GetPhotoTag) Endpoint() (string, string, string) {
 	return config.GetEndpoint(), "GET", "/api/images/photo_tag"
 }
 
+// Endpoint returns K Sequencing's request url, verb and endpoint for calling Get list of
+// Image Photo Tag API.
 func (*GetPhotoTags) Endpoint() (string, string, string) {
 	return config.GetEndpoint(), "GET", "/api/images/photo_tags"
 }
 
+// Endpoint returns K Sequencing's request url, verb and endpoint for calling Create Image
+// Photo Tag API.
 func (*PostPhotoTag) Endpoint() (string, string, string) {
 	return config.GetEndpoint(), "POST", "/api/images/photo_tags"
 }
 
+// Payload creates request's payload for Get Image Photo Tag API. Returns http.Request object
+// which contains required query parameters.
 func (g *GetPhotoTag) Payload(endpoint, method, path string) (*http.Request, error) {
 	req, err := http.NewRequest(method, string(endpoint)+path, nil)
 	if err != nil {
@@ -57,6 +70,8 @@ func (g *GetPhotoTag) Payload(endpoint, method, path string) (*http.Request, err
 	return req, nil
 }
 
+// Payload creates request's payload for Get list Image Photo Tag API. Returns http.Request
+// object which contains required query parameters.
 func (g *GetPhotoTags) Payload(endpoint, method, path string) (*http.Request, error) {
 	req, err := http.NewRequest(method, string(endpoint)+path, nil)
 	if err != nil {
@@ -76,6 +91,8 @@ func (g *GetPhotoTags) Payload(endpoint, method, path string) (*http.Request, er
 	return req, nil
 }
 
+// Payload creates request's payload for Create Image Photo Tag API. Returns http.Request
+// object which contains required formData parameters.
 func (p *PostPhotoTag) Payload(endpoint, method, path string) (*http.Request, error) {
 	values := url.Values{}
 	if p.Data != "" {
