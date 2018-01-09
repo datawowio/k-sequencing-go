@@ -36,7 +36,7 @@ type Prediction struct {
 
 // Predictions represents list of Prediction object.
 type Predictions struct {
-	Images []Prediction `json:"images"`
+	Images []Prediction `json:"image"`
 }
 
 // PredictionData refers to Prediction object.
