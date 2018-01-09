@@ -11,7 +11,7 @@ import (
 
 // Example:
 //
-//  imgData, get := &kseq.GetChoice{}, &actions.GetChoice{
+//  imgData, get := &kseq.GetClosedQuestion{}, &actions.GetClosedQuestion{
 //      ID:       "5a546e916e11571f570c1533",
 //      CustomID: "3423401123",
 //  }
@@ -20,7 +20,7 @@ import (
 //      log.Fatal(err)
 //  }
 //
-//  fmt.Printf("Image Choice: %#v\n", imgData)
+//  fmt.Printf("Image Closed Question: %#v\n", imgData)
 //
 type GetClosedQuestion struct {
 	ID       string

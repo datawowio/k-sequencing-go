@@ -49,7 +49,7 @@ type GetChoices struct {
 // Example:
 //
 //  choiceData, post := &kseq.PostChoice{}, &actions.PostChoice{
-//      Instruction: "Image's instruction",
+//		Instruction: "Image's instruction",
 //		Categories:  []string{"foo,bar"},
 //		Data:        TestImageDataURL,
 //  }

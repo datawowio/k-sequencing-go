@@ -39,7 +39,7 @@ type GetPhotoTag struct {
 //      log.Fatal(err)
 //  }
 //
-//  fmt.Printf("Image Photo Tag: %#v\n", list)
+//  fmt.Printf("Image Photo Tags: %#v\n", list)
 //  fmt.Printf("First element: %#v\n", list.Data.Images[0])
 //
 type GetPhotoTags struct {

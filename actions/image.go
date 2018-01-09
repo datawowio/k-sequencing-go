@@ -12,11 +12,11 @@ import (
 // 	resp := make(map[string]interface{})
 //
 // 	getImage := &actions.GetImage{
-// 		ID: "5a52fb556e11571f570c1530",
+//		ID: "5a52fb556e11571f570c1530",
 // 	}
 //
 // 	if err := client.Call(&resp, getImage); err != nil {
-// 		log.Fatal(err)
+//		log.Fatal(err)
 // 	}
 //
 // 	data := resp["data"].(map[string]interface{})
