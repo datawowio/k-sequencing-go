@@ -25,5 +25,31 @@ Example
 	}
 	log.Printf("%#v\n", closedQuestion)
 
+We also provide Get "any type" Image endpoint API. You only supply project key and Image
+ID (or Customer ID) for reference.
+
+Example
+
+	c, err := kseq.NewClient(ProjectKey)
+	if err != nil {
+		log.Fatal(err)
+	}
+	resp := make(map[string]interface{})
+
+	getImage := &actions.GetImage{
+		ID: "5a52fb556e11571f570c1530",
+	}
+
+	if err := c.Call(&resp, getImage); err != nil {
+		log.Fatal(err)
+	}
+
+	data := resp["data"].(map[string]interface{})
+	meta := resp["meta"].(map[string]interface{})
+	image := data["image"].(map[string]interface{})
+	log.Println("Image ID: " + image["id"])
+	log.Println("Image Status: " + image["status"])
+	log.Println("Response code: " + meta["code"])
+
 */
 package kseq
