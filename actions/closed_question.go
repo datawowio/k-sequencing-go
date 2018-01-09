@@ -9,23 +9,58 @@ import (
 	"github.com/datawowio/k-sequencing-go/config"
 )
 
-// GetClosedQuestion represents a Get Image Closed Question's Payload that required to
-// request the action.
+// Example:
+//
+//  imgData, get := &kseq.GetChoice{}, &actions.GetChoice{
+//      ID:       "5a546e916e11571f570c1533",
+//      CustomID: "3423401123",
+//  }
+//
+//  if err := client.Call(imgData, get); err != nil {
+//      log.Fatal(err)
+//  }
+//
+//  fmt.Printf("Image Choice: %#v\n", imgData)
+//
 type GetClosedQuestion struct {
 	ID       string
 	CustomID string
 }
 
-// GetClosedQuestions represents a Get list of Image Closed Question's Payload that required
-// to request the action.
+// Example:
+//
+//  list, get := &kseq.GetClosedQuestions{}, &actions.GetClosedQuestions{
+//      ID: "5a546e916e11571f570c1533",
+//      Page: 1,
+//      Item: 20,
+//  }
+//
+//  if err := client.Call(list, get); err != nil {
+//      log.Fatal(err)
+//  }
+//
+//  fmt.Printf("Image Closed Questions: %#v\n", list)
+//  fmt.Printf("First element: %#v\n", list.Data.Images[0])
+//
 type GetClosedQuestions struct {
 	ID   string
 	Page string
 	Item string
 }
 
-// PostClosedQuestion represents a Create Image Closed Question's Payload that required to
-// request the action.
+// Example:
+//
+//  imgData, post := &kseq.PostClosedQuestion{}, &actions.PostClosedQuestion{
+//		Categories: []string{"foo,bar"},
+//		Data:       TestImageDataURL,
+//  }
+//
+//  if err := client.Call(imgData, post); err != nil {
+//      log.Fatal(err)
+//  }
+//
+//  fmt.Printf("Image Closed Question: %#v\n", imgData)
+//
 type PostClosedQuestion struct {
 	Data           string
 	PostbackURL    string

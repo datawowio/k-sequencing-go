@@ -9,22 +9,59 @@ import (
 	"github.com/datawowio/k-sequencing-go/config"
 )
 
-// GetMessage represents a Get Image Message's Payload that required to request the action.
+// Example:
+//
+//  imgData, get := &kseq.GetMessage{}, &actions.GetMessage{
+//      ID:       "5a546e916e11571f570c1533",
+//      CustomID: "3423401123",
+//  }
+//
+//  if err := client.Call(imgData, get); err != nil {
+//      log.Fatal(err)
+//  }
+//
+//  fmt.Printf("Image Message: %#v\n", imgData)
+//
 type GetMessage struct {
 	ID       string
 	CustomID string
 }
 
-// GetMessages represents a Get list of Image Message's Payload that required to request
-// the action.
+// Example:
+//
+//  list, get := &kseq.GetMessages{}, &actions.GetMessages{
+//      ID:   "5a546e916e11571f570c1533",
+//      Page: 1,
+//      Item: 20,
+//  }
+//
+//  if err := client.Call(list, get); err != nil {
+//      log.Fatal(err)
+//  }
+//
+//  fmt.Printf("Image Messages: %#v\n", list)
+//  fmt.Printf("First element: %#v\n", list.Data.Images[0])
+//
 type GetMessages struct {
 	ID   string
 	Page string
 	Item string
 }
 
-// PostMessage represents a Create list of Image Message's Payload that required to
-// request the action.
+// Example:
+//
+//  imgData, post := &kseq.PostMessage{}, &actions.PostMessage{
+//		Instruction: "Instruction"
+//		Categories:  []string{"foo,bar"},
+//		Data:        TestImageDataURL,
+//  }
+//
+//  if err := client.Call(imgData, post); err != nil {
+//      log.Fatal(err)
+//  }
+//
+//  fmt.Printf("Image Message: %#v\n", imgData)
+//
 type PostMessage struct {
 	Instruction    string
 	Data           string

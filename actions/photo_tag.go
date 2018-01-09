@@ -9,22 +9,58 @@ import (
 	"github.com/datawowio/k-sequencing-go/config"
 )
 
-// GetPhotoTag represents a Get Image Photo Tag's Payload that required to request the action.
+// Example:
+//
+//  imgData, get := &kseq.GetPhotoTag{}, &actions.GetPhotoTag{
+//      ID:       "5a546e916e11571f570c1533",
+//      CustomID: "3423401123",
+//  }
+//
+//  if err := client.Call(imgData, get); err != nil {
+//      log.Fatal(err)
+//  }
+//
+//  fmt.Printf("Image Photo Tag: %#v\n", imgData)
+//
 type GetPhotoTag struct {
 	ID       string
 	CustomID string
 }
 
-// GetPhotoTags represents a Get list of Image Photo Tags's Payload that required to request the
-// action.
+// Example:
+//
+//  list, get := &kseq.GetPhotoTags{}, &actions.GetPhotoTags{
+//      ID:   "5a546e916e11571f570c1533",
+//      Page: 1,
+//      Item: 20,
+//  }
+//
+//  if err := client.Call(list, get); err != nil {
+//      log.Fatal(err)
+//  }
+//
+//  fmt.Printf("Image Photo Tag: %#v\n", list)
+//  fmt.Printf("First element: %#v\n", list.Data.Images[0])
+//
 type GetPhotoTags struct {
 	ID   string
 	Page string
 	Item string
 }
 
-// PostPhotoTag represents a Create list of Image Photo Tag's Payload that required to request
-// the action.
+// Example:
+//
+//  imgData, post := &kseq.PostPhotoTag{}, &actions.PostPhotoTag{
+//		Instruction: "Instruction"
+//		Data:        TestImageDataURL,
+//  }
+//
+//  if err := client.Call(imgData, post); err != nil {
+//      log.Fatal(err)
+//  }
+//
+//  fmt.Printf("Image Photo Tag: %#v\n", imgData)
+//
 type PostPhotoTag struct {
 	Instruction    string
 	Data           string

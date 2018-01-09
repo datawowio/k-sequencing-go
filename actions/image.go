@@ -7,7 +7,25 @@ import (
 	"github.com/datawowio/k-sequencing-go/config"
 )
 
-// GetImage represents Get Image's payload that required for requesting the action
+// Example:
+//
+// 	resp := make(map[string]interface{})
+//
+// 	getImage := &actions.GetImage{
+// 		ID: "5a52fb556e11571f570c1530",
+// 	}
+//
+// 	if err := client.Call(&resp, getImage); err != nil {
+// 		log.Fatal(err)
+// 	}
+//
+// 	data := resp["data"].(map[string]interface{})
+// 	meta := resp["meta"].(map[string]interface{})
+// 	image := data["image"].(map[string]interface{})
+// 	log.Println("Image ID: " + image["id"])
+// 	log.Println("Image Status: " + image["status"])
+// 	log.Println("Response code: " + meta["code"])
+//
 type GetImage struct {
 	ID string
 }

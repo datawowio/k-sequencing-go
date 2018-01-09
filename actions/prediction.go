@@ -9,21 +9,55 @@ import (
 	"github.com/datawowio/k-sequencing-go/config"
 )
 
-// GetPrediction represents a Get Image Prediction's Payload that required to request the action.
+// Example:
+//
+//  imgData, get := &kseq.GetPrediction{}, &actions.GetPrediction{
+//      ID: "5a546e916e11571f570c1533",
+//  }
+//
+//  if err := client.Call(imgData, get); err != nil {
+//      log.Fatal(err)
+//  }
+//
+//  fmt.Printf("Image Prediction: %#v\n", imgData)
+//
 type GetPrediction struct {
 	ID string
 }
 
-// GetPredictions represents a Get list of Image Predictions's Payload that required to request the
-// action.
+// Example:
+//
+//  list, get := &kseq.GetPredictions{}, &actions.GetPredictions{
+//      ID:   "5a546e916e11571f570c1533",
+//      Page: 1,
+//      Item: 20,
+//  }
+//
+//  if err := client.Call(list, get); err != nil {
+//      log.Fatal(err)
+//  }
+//
+//  fmt.Printf("Image Predictions: %#v\n", list)
+//  fmt.Printf("First element: %#v\n", list.Data.Images[0])
+//
 type GetPredictions struct {
 	ID   string
 	Page string
 	Item string
 }
 
-// PostPrediction represents a Create list of Image Prediction's Payload that required to request
-// the action.
+// Example:
+//
+//  imgData, post := &kseq.PostPrediction{}, &actions.PostPrediction{
+//		Data: TestImageDataURL,
+//  }
+//
+//  if err := client.Call(imgData, post); err != nil {
+//      log.Fatal(err)
+//  }
+//
+//  fmt.Printf("Image Prediction: %#v\n", imgData)
+//
 type PostPrediction struct {
 	Data           string
 	PostbackURL    string

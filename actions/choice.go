@@ -9,22 +9,57 @@ import (
 	"github.com/datawowio/k-sequencing-go/config"
 )
 
-// GetChoice represents a Get Image Choice's Payload that required to request the action.
+// Example:
+//
+//  choiceData, get := &kseq.GetChoice{}, &actions.GetChoice{
+//      ID:       "5a546e916e11571f570c1533",
+//      CustomID: "3423401123",
+//  }
+//
+//  if err := client.Call(choiceData, get); err != nil {
+//      log.Fatal(err)
+//  }
+//
+//  fmt.Printf("Image Choice: %#v\n", choiceData)
+//
 type GetChoice struct {
 	ID       string
 	CustomID string
 }
 
-// GetChoices represents a Get list of Image Choices's Payload that required to request the
-// action.
+// Example:
+//
+//  list, get := &kseq.GetChoices{}, &actions.GetChoices{
+//      ID: "5a546e916e11571f570c1533",
+//  }
+//
+//  if err := client.Call(list, get); err != nil {
+//      log.Fatal(err)
+//  }
+//
+//  fmt.Printf("Image Choices: %#v\n", list)
+//  fmt.Printf("First element: %#v\n", list.Data.Images[0])
+//
 type GetChoices struct {
 	ID   string
 	Page string
 	Item string
 }
 
-// PostChoice represents a Create list of Image Choice's Payload that required to request
-// the action.
+// Example:
+//
+//  choiceData, post := &kseq.PostChoice{}, &actions.PostChoice{
+//      Instruction: "Image's instruction",
+//		Categories:  []string{"foo,bar"},
+//		Data:        TestImageDataURL,
+//  }
+//
+//  if err := client.Call(choiceData, post); err != nil {
+//      log.Fatal(err)
+//  }
+//
+//  fmt.Printf("Image Choice: %#v\n", choiceData)
+//
 type PostChoice struct {
 	Instruction    string
 	Categories     []string
