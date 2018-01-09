@@ -1,0 +1,23 @@
+{
+  "data": {
+    "id": "5a44671ab3957c2ab5c33326",
+    "allow_empty": false,
+    "answer": [],
+    "categories": [
+      "foo,bar"
+    ],
+    "credit_charged": 0,
+    "custom_id": null,
+    "data": "https://assets-cdn.github.com/images/modules/open_graph/github-mark.png",
+    "instruction": "Image's instruction",
+    "multiple": false,
+    "postback_url": "https://9333bbac.ngrok.io/callbacks",
+    "processed_at": null,
+    "project_id": 105,
+    "status": "unprocess"
+  },
+  "meta": {
+    "code": 200,
+    "message": "success"
+  }
+}
