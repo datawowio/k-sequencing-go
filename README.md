@@ -54,7 +54,7 @@ export LOCAL_DEV=true
 ```
 
 [0]: http://datawow.io
-[1]: https://godoc.org/gopkg.in/datawowio/k-sequencing-go.v2
+[1]: https://godoc.org/github.com/datawowio/k-sequencing-go
 
 # License
 

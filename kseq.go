@@ -5,7 +5,7 @@ Full REST API documentation is available at https://datawow.readme.io/v1.0/refer
 Usage
 
 Create a client with kseq.NewClient, along with supply your project key. After that, use
-client.Call with actions object from the https://godoc.org/gopkg.in/datawowio/k-sequencing-go.v2/actions
+client.Call with actions object from the https://godoc.org/github.com/datawowio/k-sequencing-go/actions
 package to perform API calls. The first parameter to client.Call lets you supply a struct
 object from index that listed below to unmarshal the result.
 
