@@ -1,0 +1,15 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/golang:1.9
+
+    working_directory: /gosrc/github.com/datawowio/k-sequencing-go
+
+    steps:
+      - checkout
+      - run: go get github.com/golang/lint/golint
+      - run: go get -t ./...
+      - run: golint ./... 
+      - run: go test ./...
+      - run: go build
