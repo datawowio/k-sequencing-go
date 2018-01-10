@@ -24,7 +24,7 @@ func TestGetImagePayload(t *testing.T) {
 	}
 	endpoint, method, path := g.Endpoint()
 	req, err := g.Payload(endpoint, method, path)
-	a.NotNil(t, err)
+	a.Nil(t, err)
 	a.NotNil(t, req)
 	a.Contains(t, req.URL.Path, g.ID)
 }
