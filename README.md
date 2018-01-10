@@ -1,6 +1,7 @@
 # K Sequencing Go
 
 [![GoDoc](https://godoc.org/github.com/datawowio/k-sequencing-go?status.svg)][1]
+[![CircleCI Build Status](https://circleci.com/gh/datawowio/k-sequencing-go.svg?style=shield)][2]
 
 Install with:
 
@@ -57,6 +58,7 @@ export LOCAL_DEV=true
 
 [0]: http://datawow.io
 [1]: https://godoc.org/github.com/datawowio/k-sequencing-go
+[2]: https://circleci.com/gh/datawowio/k-sequencing-go
 
 # License
 
