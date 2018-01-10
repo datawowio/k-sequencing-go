@@ -1,5 +1,7 @@
 # K Sequencing Go
 
+[![GoDoc](https://godoc.org/github.com/datawowio/k-sequencing-go?status.svg)][1]
+
 Install with:
 
 ```go
