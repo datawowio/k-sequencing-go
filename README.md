@@ -3,6 +3,9 @@
 [![GoDoc](https://godoc.org/github.com/datawowio/k-sequencing-go?status.svg)][1]
 [![CircleCI Build Status](https://circleci.com/gh/datawowio/k-sequencing-go.svg?style=shield)][2]
 
+Please contact [support@datawow.io](support@datawow.io) if you have any question or need a
+support for this library.
+
 Install with:
 
 ```go
