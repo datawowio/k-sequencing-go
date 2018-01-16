@@ -11,7 +11,7 @@ go get github.com/datawowio/k-sequencing-go
 
 # Usage
 
-Create client with `kseq.NewClient` and use actions object from the
+Create client and supply `ProjectKey` by `kseq.NewClient(ProjectKey)` and use actions object from the
 `github.com/datawowio/k-sequencing-go/actions` package to perform API operations.
 
 ```go
@@ -137,7 +137,7 @@ choiceData, post := &kseq.PostChoice{}, &actions.PostChoice{
 }
 
 if err := client.Call(choiceData, post); err != nil {
-  log.Fatal(err)
+    log.Fatal(err)
 }
 
 fmt.Printf("Image Choice: %#v\n", choiceData)
@@ -166,7 +166,7 @@ imgData, get := &kseq.GetClosedQuestion{}, &actions.GetClosedQuestion{
 }
 
 if err := client.Call(imgData, get); err != nil {
-  log.Fatal(err)
+    log.Fatal(err)
 }
 
 fmt.Printf("Image Closed Question: %#v\n", imgData)
@@ -193,7 +193,7 @@ list, get := &kseq.GetClosedQuestions{}, &actions.GetClosedQuestions{
 }
 
 if err := client.Call(list, get); err != nil {
-  log.Fatal(err)
+    log.Fatal(err)
 }
 
 fmt.Printf("Image Closed Questions: %#v\n", list)
@@ -345,7 +345,7 @@ list, get := &kseq.GetPhotoTags{}, &actions.GetPhotoTags{
 }
 
 if err := client.Call(list, get); err != nil {
-  log.Fatal(err)
+    log.Fatal(err)
 }
 
 fmt.Printf("Image Photo Tags: %#v\n", list)
@@ -357,12 +357,12 @@ fmt.Printf("First element: %#v\n", list.Data.Images[0])
 ###### Payload
 ```go
 type PostMessage struct {
-	  Instruction    string // required, Image Instruction
-	  Data           string // required, Input image url to moderate
-	  PostbackURL    string // optional, Image postback url
+    Instruction    string // required, Image Instruction
+    Data           string // required, Input image url to moderate
+    PostbackURL    string // optional, Image postback url
     PostbackMethod string // optional, Postback's http method
-	  CustomID       string // optional, Customized ID
-	  StaffID        int64  // optional, Staff's ID
+    CustomID       string // optional, Customized ID
+    StaffID        int64  // optional, Staff's ID
 }
 ```
 
@@ -387,7 +387,7 @@ fmt.Printf("Image Photo Tag: %#v\n", imgData)
 ###### Payload
 ```go
 type GetPrediction struct {
-	  ID string // required
+    ID string // required
 }
 ```
 
@@ -436,10 +436,10 @@ fmt.Printf("First element: %#v\n", list.Data.Images[0])
 ###### Payload
 ```go
 type PostPrediction struct {
-	Data           string // required, Input image url to moderate
-	PostbackURL    string // optional, Image postback url
-  PostbackMethod string // optional, Postback's http method
-	CustomID       string // optional, Customized ID
+    Data           string // required, Input image url to moderate
+    PostbackURL    string // optional, Image postback url
+    PostbackMethod string // optional, Postback's http method
+    CustomID       string // optional, Customized ID
 }
 ```
 
