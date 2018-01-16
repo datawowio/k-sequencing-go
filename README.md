@@ -456,10 +456,10 @@ if err := client.Call(imgData, post); err != nil {
 fmt.Printf("Image Prediction: %#v\n", imgData)
 ```
 
+## Get list of Images from project
+
 In case you don't want to specify type of struct when you call get list of image, you can 
 call via `GetImage` which will filter the result from `ProjectKey` you supply to `Client`.
-
-### Get list of Images from project
 
 ###### Payload
 ```go
