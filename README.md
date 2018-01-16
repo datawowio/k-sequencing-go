@@ -62,8 +62,8 @@ We provide list of K-Sequencing service action that client can call from list be
 ```go
 type GetChoice struct {
     // Either `ID` or `CustomID` must be provided
-    ID       string
-    CustomID string
+    ID       string // Image's ID
+    CustomID string // Customized ID
 }
 ```
 
@@ -89,8 +89,8 @@ fmt.Printf("Image Choice: %#v\n", choiceData)
 ```go
 type GetChoices struct {
     ID   string // required, `ID` could be Image's ID or CustomID
-    Page string // optional
-    Item string // optional
+    Page string // optional, The number of page
+    Item string // optional, The number of items per page
 }
 ```
 
@@ -115,15 +115,15 @@ fmt.Printf("First element: %#v\n", list.Data.Images[0])
 
 ```go
 type PostChoice struct {
-    Instruction    string   // required
-    Categories     []string // required
-    Data           string   // required
-    AllowEmpty     bool     // optional
-    PostbackURL    string   // optional
-    PostbackMethod string   // optional
-    Multiple       bool     // optional
-    CustomID       string   // optional
-    StaffID        int64    // optional
+    Instruction    string   // required, Image Instruction
+    Categories     []string // required, Categories of answers
+    Data           string   // required, Input image url to moderate 
+    AllowEmpty     bool     // optional, Allow to sent answer with empty choice
+    PostbackURL    string   // optional, Image postback url
+    PostbackMethod string   // optional, Postback's http method
+    Multiple       bool     // optional, `true` for checkboxes and `false` for radio
+    CustomID       string   // optional, Customized ID
+    StaffID        int64    // optional, Staff's ID
 }
 ```
 
@@ -152,8 +152,8 @@ fmt.Printf("Image Choice: %#v\n", choiceData)
 ```go
 type GetClosedQuestion struct {
     // Either `ID` or `CustomID` must be provided
-    ID       string 
-    CustomID string
+    ID       string // Image's ID
+    CustomID string // Customized ID
 }
 ```
 
@@ -179,8 +179,8 @@ fmt.Printf("Image Closed Question: %#v\n", imgData)
 ```go
 type GetClosedQuestions struct {
     ID   string // required, `ID` could be either Image's ID or CustomID
-    Page string // optional
-    Item string // optional
+    Page string // optional, The number of page
+    Item string // optional, The number of items per page
 }
 ```
 
@@ -206,11 +206,11 @@ fmt.Printf("First element: %#v\n", list.Data.Images[0])
 
 ```go
 type PostClosedQuestion struct {
-    Data           string // required
-    PostbackURL    string // optional
-    PostbackMethod string // optional
-    CustomID       string // optional
-    StaffID        int64  // optional
+    Data           string // required, Input image url to moderate
+    PostbackURL    string // optional, Image postback url
+    PostbackMethod string // optional, Postback's http method
+    CustomID       string // optional, Customized ID
+    StaffID        int64  // optional, Staff's ID
 }
 ```
 
@@ -223,8 +223,8 @@ type PostClosedQuestion struct {
 ```go
 type GetMessage struct {
     // Either `ID` or `CustomID` must be provided
-    ID       string
-    CustomID string
+    ID       string // Image's ID
+    CustomID string // optional, Customized ID
 }
 ```
 
@@ -249,8 +249,8 @@ fmt.Printf("Image Message: %#v\n", imgData)
 ```go
 type GetMessages struct {
     ID   string // required, `ID` could be either Image's ID or CustomID
-    Page string
-    Item string
+    Page string // optional, The number of page
+    Item string // optional, The number of items per page
 }
 ```
 
@@ -275,12 +275,12 @@ fmt.Printf("First element: %#v\n", list.Data.Images[0])
 ###### Payload
 ```go
 type PostMessage struct {
-    Instruction    string // required
-    Data           string // required
-    PostbackURL    string // optional
-    PostbackMethod string // optional
-    CustomID       string // optional
-    StaffID        int64  // optional
+    Instruction    string // required, Image Instruction
+    Data           string // required, Input image url to moderate
+    PostbackURL    string // optional, Image postback url
+    PostbackMethod string // optional, Postback's http method
+    CustomID       string // optional, Customized ID
+    StaffID        int64  // optional, Staff's ID
 }
 ```
 
@@ -288,7 +288,6 @@ type PostMessage struct {
 ```go
 imgData, post := &kseq.PostMessage{}, &actions.PostMessage{
     Instruction: "Instruction"
-    Categories:  []string{"foo,bar"},
     Data:        TestImageDataURL,
 }
 
@@ -307,8 +306,8 @@ fmt.Printf("Image Message: %#v\n", imgData)
 ```go
 type GetMessage struct {
     // Either `ID` or `CustomID` must be provided
-    ID       string 
-    CustomID string
+    ID       string // Image's ID
+    CustomID string // Customized ID
 }
 ```
 
@@ -332,8 +331,8 @@ fmt.Printf("Image Photo Tag: %#v\n", imgData)
 ```go
 type GetMessages struct {
     ID   string // required, `ID` could be either Image's ID or CustomID
-    Page string
-    Item string
+    Page string // optional, The number of page
+    Item string // optional, The number of items per page
 }
 ```
 
@@ -358,12 +357,12 @@ fmt.Printf("First element: %#v\n", list.Data.Images[0])
 ###### Payload
 ```go
 type PostMessage struct {
-	  Instruction    string // required
-	  Data           string // required
-	  PostbackURL    string // optional
-	  PostbackMethod string // optional
-	  CustomID       string // optional
-	  StaffID        int64  // optional
+	  Instruction    string // required, Image Instruction
+	  Data           string // required, Input image url to moderate
+	  PostbackURL    string // optional, Image postback url
+    PostbackMethod string // optional, Postback's http method
+	  CustomID       string // optional, Customized ID
+	  StaffID        int64  // optional, Staff's ID
 }
 ```
 
@@ -411,8 +410,8 @@ fmt.Printf("Image Prediction: %#v\n", imgData)
 ```go
 type GetPredictions struct {
     ID   string // required, `ID` could be either Image's ID or CustomID
-    Page string
-    Item string
+    Page string // optional, The number of page
+    Item string // optional, The number of items per page
 }
 ```
 
@@ -437,10 +436,10 @@ fmt.Printf("First element: %#v\n", list.Data.Images[0])
 ###### Payload
 ```go
 type PostPrediction struct {
-	Data           string // required
-	PostbackURL    string // optional
-	PostbackMethod string // optional
-	CustomID       string // optional
+	Data           string // required, Input image url to moderate
+	PostbackURL    string // optional, Image postback url
+  PostbackMethod string // optional, Postback's http method
+	CustomID       string // optional, Customized ID
 }
 ```
 

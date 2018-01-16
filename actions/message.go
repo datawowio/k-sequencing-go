@@ -52,7 +52,6 @@ type GetMessages struct {
 //
 //  imgData, post := &kseq.PostMessage{}, &actions.PostMessage{
 //		Instruction: "Instruction"
-//		Categories:  []string{"foo,bar"},
 //		Data:        TestImageDataURL,
 //  }
 //
