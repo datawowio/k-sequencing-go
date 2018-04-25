@@ -72,19 +72,19 @@ type PostClosedQuestion struct {
 // Endpoint returns K Sequencing's request url, verb and endpoint for calling Get Image
 // Closed Question API.
 func (*GetClosedQuestion) Endpoint() (string, string, string) {
-	return config.GetEndpoint(), "GET", "/api/images/closed_question"
+	return config.KSeqAPIURL, "GET", "/api/images/closed_question"
 }
 
 // Endpoint returns K Sequencing's request url, verb and endpoint for calling Get list of
 // Image Closed Question API.
 func (*GetClosedQuestions) Endpoint() (string, string, string) {
-	return config.GetEndpoint(), "GET", "/api/images/closed_questions"
+	return config.KSeqAPIURL, "GET", "/api/images/closed_questions"
 }
 
 // Endpoint returns K Sequencing's request url, verb and endpoint for calling Create Image
 // Closed Question API.
 func (*PostClosedQuestion) Endpoint() (string, string, string) {
-	return config.GetEndpoint(), "POST", "/api/images/closed_questions"
+	return config.KSeqAPIURL, "POST", "/api/images/closed_questions"
 }
 
 // Payload creates request's payload for Get Image Closed Question API. Returns http.Request

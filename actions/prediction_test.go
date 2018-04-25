@@ -11,7 +11,7 @@ func TestGetPredictionTagEndpoint(t *testing.T) {
 	g := &GetPrediction{}
 	endpoint, method, path := g.Endpoint()
 	a.NotNil(t, endpoint)
-	a.Equal(t, config.API, endpoint)
+	a.Equal(t, config.KSeqAPIURL, endpoint)
 	a.NotNil(t, method)
 	a.Equal(t, "GET", method)
 	a.NotNil(t, path)
@@ -22,7 +22,7 @@ func TestGetPredictionsPayload(t *testing.T) {
 	g := &GetPredictions{}
 	endpoint, method, path := g.Endpoint()
 	a.NotNil(t, endpoint)
-	a.Equal(t, config.API, endpoint)
+	a.Equal(t, config.KSeqAPIURL, endpoint)
 	a.NotNil(t, method)
 	a.Equal(t, "GET", method)
 	a.NotNil(t, path)
@@ -33,7 +33,7 @@ func TestPostPrediction(t *testing.T) {
 	p := &PostPrediction{}
 	endpoint, method, path := p.Endpoint()
 	a.NotNil(t, endpoint)
-	a.Equal(t, config.API, endpoint)
+	a.Equal(t, config.KSeqAPIURL, endpoint)
 	a.NotNil(t, method)
 	a.Equal(t, "POST", method)
 	a.NotNil(t, path)

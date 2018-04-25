@@ -72,19 +72,19 @@ type PostMessage struct {
 
 // Endpoint returns K Sequencing's request url, verb and endpoint for calling Get Image Message API.
 func (*GetMessage) Endpoint() (string, string, string) {
-	return config.GetEndpoint(), "GET", "/api/images/message"
+	return config.KSeqAPIURL, "GET", "/api/images/message"
 }
 
 // Endpoint returns K Sequencing's request url, verb and endpoint for calling Get list of
 // Image Message API.
 func (*GetMessages) Endpoint() (string, string, string) {
-	return config.GetEndpoint(), "GET", "/api/images/messages"
+	return config.KSeqAPIURL, "GET", "/api/images/messages"
 }
 
 // Endpoint returns K Sequencing's request url, verb and endpoint for calling Create Image
 // Message API.
 func (*PostMessage) Endpoint() (string, string, string) {
-	return config.GetEndpoint(), "POST", "/api/images/messages"
+	return config.KSeqAPIURL, "POST", "/api/images/messages"
 }
 
 // Payload creates request's payload for Get Image Message API. Returns http.Request object

@@ -11,7 +11,7 @@ func TestGetImageEndpoint(t *testing.T) {
 	g := &GetImage{}
 	endpoint, method, path := g.Endpoint()
 	a.NotNil(t, endpoint)
-	a.Equal(t, config.API, endpoint)
+	a.Equal(t, config.KSeqAPIURL, endpoint)
 	a.NotNil(t, method)
 	a.Equal(t, "GET", method)
 	a.NotNil(t, path)

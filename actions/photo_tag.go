@@ -73,19 +73,19 @@ type PostPhotoTag struct {
 // Endpoint returns K Sequencing's request url, verb and endpoint for calling Get Image
 // Photo Tag API.
 func (*GetPhotoTag) Endpoint() (string, string, string) {
-	return config.GetEndpoint(), "GET", "/api/images/photo_tag"
+	return config.KSeqAPIURL, "GET", "/api/images/photo_tag"
 }
 
 // Endpoint returns K Sequencing's request url, verb and endpoint for calling Get list of
 // Image Photo Tag API.
 func (*GetPhotoTags) Endpoint() (string, string, string) {
-	return config.GetEndpoint(), "GET", "/api/images/photo_tags"
+	return config.KSeqAPIURL, "GET", "/api/images/photo_tags"
 }
 
 // Endpoint returns K Sequencing's request url, verb and endpoint for calling Create Image
 // Photo Tag API.
 func (*PostPhotoTag) Endpoint() (string, string, string) {
-	return config.GetEndpoint(), "POST", "/api/images/photo_tags"
+	return config.KSeqAPIURL, "POST", "/api/images/photo_tags"
 }
 
 // Payload creates request's payload for Get Image Photo Tag API. Returns http.Request object
