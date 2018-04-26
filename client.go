@@ -70,5 +70,5 @@ func (c *Client) Call(result interface{}, act actions.Action) error {
 
 func (c *Client) setHeaders(req *http.Request) {
 	req.Header.Set("Authorization", c.ProjectKey)
-	req.Header.Set("Content-Type", "application/x-www-form-urlencoded")
+	req.Header.Set("Content-Type", "application/json")
 }
