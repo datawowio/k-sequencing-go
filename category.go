@@ -17,7 +17,7 @@ type CategoryPost struct {
 	Meta Meta     `json:"meta"`
 }
 
-type Conversation struct {
+type Conv struct {
 	Name    string
 	Message string
 }
