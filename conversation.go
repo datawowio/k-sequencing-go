@@ -12,6 +12,11 @@ type Conversation struct {
 	Status                string   `json:"status"`
 }
 
+type ConversationGet struct {
+	Data Conversation `json:"data"`
+	Meta Meta         `json:"meta"`
+}
+
 type ConversationPost struct {
 	Data Conversation `json:"data"`
 	Meta Meta         `json:"meta"`
