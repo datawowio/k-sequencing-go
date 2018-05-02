@@ -1,9 +1,5 @@
 package kseq
 
-import (
-	"encoding/json"
-)
-
 type Category struct {
 	ID           string   `json:"id"`
 	Title        string   `json:"title"`
@@ -34,16 +30,4 @@ type CategoryList struct {
 type Conv struct {
 	Name    string `json:"name"`
 	Message string `json:"message"`
-}
-
-func (c *Conv) UnmarshalJSON(b []byte) error {
-	type conv Conv
-	var cv Conv
-
-	err := json.Unmarshal(b, &cv)
-	if err == nil {
-		*c = Conv(cv)
-	}
-
-	return nil
 }

@@ -16,6 +16,11 @@ type ProfanityGet struct {
 	Meta Meta      `json:"meta"`
 }
 
+type ProfanityList struct {
+	Data []Profanity `json:"data"`
+	Meta Meta        `json:"meta"`
+}
+
 type ProfanityCreate struct {
 	Data Profanity `json:"data"`
 	Meta Meta      `json:"meta"`

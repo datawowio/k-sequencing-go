@@ -16,6 +16,11 @@ type TextClosedQuestionGet struct {
 	Meta Meta         `json:"meta"`
 }
 
+type TextClosedQuestionList struct {
+	Data []TextClosedQuestion `json:"data"`
+	Meta Meta                 `json:"meta"`
+}
+
 type TextClosedQuestionCreate struct {
 	Data TextClosedQuestion `json:"data"`
 	Meta Meta               `json:"meta"`

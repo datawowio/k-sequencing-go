@@ -17,6 +17,11 @@ type ConversationGet struct {
 	Meta Meta         `json:"meta"`
 }
 
+type ConversationList struct {
+	Data []Conversation `json:"data"`
+	Meta Meta           `json:"meta"`
+}
+
 type ConversationCreate struct {
 	Data Conversation `json:"data"`
 	Meta Meta         `json:"meta"`
