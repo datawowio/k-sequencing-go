@@ -85,6 +85,7 @@ func (p *CategoryParams) Payload(endpoint, method, path string) (*http.Request, 
 	if err != nil {
 		return nil, err
 	}
+	req.Header.Set("Content-Type", "application/json")
 
 	return req, nil
 }
