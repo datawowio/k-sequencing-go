@@ -11,7 +11,12 @@ type Profanity struct {
 	Status      string `json:"status"`
 }
 
-type ProfanityPost struct {
+type ProfanityGet struct {
+	Data Profanity `json:"data"`
+	Meta Meta      `json:"meta"`
+}
+
+type ProfanityCreate struct {
 	Data Profanity `json:"data"`
 	Meta Meta      `json:"meta"`
 }

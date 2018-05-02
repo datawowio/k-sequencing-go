@@ -11,7 +11,12 @@ type TextClosedQuestion struct {
 	Status      string `json:"status"`
 }
 
-type TextClosedQuestionPost struct {
+type TextClosedQuestionGet struct {
+	Data Conversation `json:"data"`
+	Meta Meta         `json:"meta"`
+}
+
+type TextClosedQuestionCreate struct {
 	Data TextClosedQuestion `json:"data"`
 	Meta Meta               `json:"meta"`
 }

@@ -17,7 +17,7 @@ type ConversationGet struct {
 	Meta Meta         `json:"meta"`
 }
 
-type ConversationPost struct {
+type ConversationCreate struct {
 	Data Conversation `json:"data"`
 	Meta Meta         `json:"meta"`
 }

@@ -6,7 +6,7 @@ type Filter struct {
 	UseDefault bool     `json:"use_default"`
 }
 
-type FilterPost struct {
+type FilterCreate struct {
 	Data Filter `json:"data"`
 	Meta Meta   `json:"meta"`
 }
