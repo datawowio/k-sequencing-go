@@ -37,8 +37,9 @@ func (c *Client) Call(result interface{}, act actions.Action) error {
 		return err
 	}
 
-	if req.Header.Get("Authorization") == "" {
-		c.setHeaders(req)
+	req.Header.Set("Authorization", c.ProjectKey)
+	if req.Header.Get("Content-Type") == "" {
+		c.setContentType(req)
 	}
 
 	resp, e := c.Client.Do(req)
@@ -71,7 +72,6 @@ func (c *Client) Call(result interface{}, act actions.Action) error {
 	return nil
 }
 
-func (c *Client) setHeaders(req *http.Request) {
-	req.Header.Set("Authorization", c.ProjectKey)
+func (c *Client) setContentType(req *http.Request) {
 	req.Header.Set("Content-Type", "application/x-www-form-urlencoded")
 }
