@@ -33,7 +33,7 @@ type mockPayload struct {
 }
 
 func (*mockPayload) Endpoint() (string, string, string) {
-	return config.LocalAPI, "method", "path"
+	return config.KSeqAPIURL, "method", "path"
 }
 
 func (m *mockPayload) Payload(endpoint, method, path string) (*http.Request, error) {
