@@ -1,0 +1,45 @@
+package kseq
+
+// GetImageCheck represents the response object that returned from Get Image Closed
+// Question API. (GET `/api/images/closed_question`)
+type GetImageCheck struct {
+	Data ImageCheckData `json:"data"`
+	Meta Meta           `json:"meta"`
+}
+
+// GetImageChecks represents the response object that returned from
+// Get List of Image Closed Questions API. (GET `/api/images/closed_questions`)
+type GetImageChecks struct {
+	Data ImageChecks `json:"data"`
+	Meta Meta        `json:"meta"`
+}
+
+// PostImageCheck respresents the created object that returned from Create Image Closed
+// Question API. (POST `/api/images/closed_question`)
+type PostImageCheck struct {
+	Data ImageCheckData `json:"data"`
+	Meta Meta           `json:"meta"`
+}
+
+// ImageCheck represents Image Closed Question object.
+type ImageCheck struct {
+	ID            string  `json:"id"`
+	Answer        string  `json:"answer"`
+	CreditCharged float32 `json:"credit_charged"`
+	CustomID      string  `json:"custom_id"`
+	Source        string  `json:"data"`
+	PostbackURL   string  `json:"postback_url"`
+	ProcessedAt   string  `json:"processed_at"`
+	ProjectID     int     `json:"project_id"`
+	Status        string  `json:"status"`
+}
+
+// ImageChecks represents list of ImageCheck object.
+type ImageChecks struct {
+	Images []ImageCheck `json:"images"`
+}
+
+// ImageCheckData refers to ImageCheck object
+type ImageCheckData struct {
+	Image ImageCheck `json:"image"`
+}
