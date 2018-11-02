@@ -9,6 +9,10 @@ import (
 	"github.com/datawowio/k-sequencing-go/config"
 )
 
+const (
+	Path = "/api/images/check"
+)
+
 // Example:
 //
 //  imgData, get := &kseq.GetImageCheck{}, &actions.GetImageCheck{
@@ -70,19 +74,19 @@ type PostImageCheck struct {
 // Endpoint returns K Sequencing's request url, verb and endpoint for calling Get Image
 // Closed Question API.
 func (*GetImageCheck) Endpoint() (string, string, string) {
-	return config.KSeqAPIURL, "GET", "/api/images/check"
+	return config.KSeqAPIURL, "GET", Path
 }
 
 // Endpoint returns K Sequencing's request url, verb and endpoint for calling Get list of
 // Image Closed Question API.
 func (*GetImageChecks) Endpoint() (string, string, string) {
-	return config.KSeqAPIURL, "GET", "/api/images/check"
+	return config.KSeqAPIURL, "GET", Path
 }
 
 // Endpoint returns K Sequencing's request url, verb and endpoint for calling Create Image
 // Closed Question API.
 func (*PostImageCheck) Endpoint() (string, string, string) {
-	return config.KSeqAPIURL, "POST", "/api/images/check"
+	return config.KSeqAPIURL, "POST", Path
 }
 
 // Payload creates request's payload for Get Image Closed Question API. Returns http.Request
