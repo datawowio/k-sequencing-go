@@ -491,6 +491,82 @@ log.Println("Image Status: " + image["status"])
 log.Println("Response code: " + meta["code"])
 ```
 
+## Image Check
+
+### Get Image Check by ID
+
+###### Payload
+```go
+type GetImageCheck struct {
+	  ID string // Image's ID or Custom ID
+}
+```
+
+###### Example
+```go
+imgData, get := &kseq.GetImageCheck{}, &actions.GetImageCheck{
+    ID: "5a546e916e11571f570c1533",
+}
+
+if err := client.Call(imgData, get); err != nil {
+    log.Fatal(err)
+}
+
+fmt.Printf("Image Check: %#v\n", imgData)
+```
+
+### Get list of Image Check
+
+###### Payload
+```go
+type GetImageChecks struct {
+	  ID   string // optional, `ID` could be either Image's ID or CustomID
+	  Page string // optional, The number of page
+	  Item string // optional, The number of items per page
+}
+```
+
+###### Example
+```go
+list, get := &kseq.GetImageChecks{}, &actions.GetImageChecks{
+    ID:   "5a546e916e11571f570c1533",
+    Page: "1",
+    Item: "20",
+}
+
+if err := client.Call(list, get); err != nil {
+    log.Fatal(err)
+}
+
+fmt.Printf("Image Check: %#v\n", list)
+fmt.Printf("First element: %#v\n", list.Data.Images[0])
+```
+
+### Create Image Check
+
+###### Payload
+```go
+type PostImageCheck struct {
+	  Data           string // required, Input image url to moderate
+	  PostbackURL    string // optional, Image postback url
+	  PostbackMethod string // optional, Postback's http method
+	  CustomID       string // optional, Customized ID
+}
+```
+
+###### Example
+```go
+imgData, post := &kseq.PostImageCheck{}, &actions.PostImageCheck{
+    Data: TestImageDataURL,
+}
+
+if err := client.Call(imgData, post); err != nil {
+    log.Fatal(err)
+}
+
+fmt.Printf("Image Check: %#v\n", imgData)
+```
+
 [0]: http://datawow.io
 [1]: https://godoc.org/github.com/datawowio/k-sequencing-go
 [2]: https://circleci.com/gh/datawowio/k-sequencing-go
