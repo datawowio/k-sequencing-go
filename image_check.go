@@ -1,7 +1,7 @@
 package kseq
 
 // GetImageCheck represents the response object that returned from Get Image Check
-// API. (GET `/api/images/check`)
+// API. (GET `/api/images/check/:id`)
 type GetImageCheck struct {
 	Data ImageCheckData `json:"data"`
 	Meta Meta           `json:"meta"`
