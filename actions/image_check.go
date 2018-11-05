@@ -16,15 +16,14 @@ const (
 // Example:
 //
 //  imgData, get := &kseq.GetImageCheck{}, &actions.GetImageCheck{
-//      ID:       "5a546e916e11571f570c1533",
-//      CustomID: "3423401123",
+//      ID: "5a546e916e11571f570c1533",
 //  }
 //
 //  if err := client.Call(imgData, get); err != nil {
 //      log.Fatal(err)
 //  }
 //
-//  fmt.Printf("Image Closed Question: %#v\n", imgData)
+//  fmt.Printf("Image Check: %#v\n", imgData)
 //
 type GetImageCheck struct {
 	ID string
@@ -42,7 +41,7 @@ type GetImageCheck struct {
 //      log.Fatal(err)
 //  }
 //
-//  fmt.Printf("Image Closed Questions: %#v\n", list)
+//  fmt.Printf("Image Checks: %#v\n", list)
 //  fmt.Printf("First element: %#v\n", list.Data.Images[0])
 //
 type GetImageChecks struct {
@@ -54,15 +53,14 @@ type GetImageChecks struct {
 // Example:
 //
 //  imgData, post := &kseq.PostImageCheck{}, &actions.PostImageCheck{
-//		Categories: []string{"foo,bar"},
-//		Data:       TestImageDataURL,
+//		Data: TestImageDataURL,
 //  }
 //
 //  if err := client.Call(imgData, post); err != nil {
 //      log.Fatal(err)
 //  }
 //
-//  fmt.Printf("Image Closed Question: %#v\n", imgData)
+//  fmt.Printf("Image Check: %#v\n", imgData)
 //
 type PostImageCheck struct {
 	Data           string
@@ -72,24 +70,24 @@ type PostImageCheck struct {
 }
 
 // Endpoint returns K Sequencing's request url, verb and endpoint for calling Get Image
-// Closed Question API.
+// Check API.
 func (*GetImageCheck) Endpoint() (string, string, string) {
 	return config.KSeqAPIURL, "GET", Path
 }
 
 // Endpoint returns K Sequencing's request url, verb and endpoint for calling Get list of
-// Image Closed Question API.
+// Image Check API.
 func (*GetImageChecks) Endpoint() (string, string, string) {
 	return config.KSeqAPIURL, "GET", Path
 }
 
 // Endpoint returns K Sequencing's request url, verb and endpoint for calling Create Image
-// Closed Question API.
+// Check API.
 func (*PostImageCheck) Endpoint() (string, string, string) {
 	return config.KSeqAPIURL, "POST", Path
 }
 
-// Payload creates request's payload for Get Image Closed Question API. Returns http.Request
+// Payload creates request's payload for Get Image Check API. Returns http.Request
 // object which contains required query parameters.
 func (g *GetImageCheck) Payload(endpoint, method, path string) (*http.Request, error) {
 	if g.ID == "" {
@@ -103,7 +101,7 @@ func (g *GetImageCheck) Payload(endpoint, method, path string) (*http.Request, e
 	return req, nil
 }
 
-// Payload creates request's payload for Get list Image Closed Question API. Returns
+// Payload creates request's payload for Get list Image Check API. Returns
 // http.Request which contains required query parameters.
 func (g *GetImageChecks) Payload(endpoint, method, path string) (*http.Request, error) {
 	req, err := http.NewRequest(method, string(endpoint)+path, nil)
@@ -124,7 +122,7 @@ func (g *GetImageChecks) Payload(endpoint, method, path string) (*http.Request, 
 	return req, nil
 }
 
-// Payload creates request's payload for Create Image Close Question API. Returns
+// Payload creates request's payload for Create Image Check API. Returns
 // http.Request which contains required query parameters.
 func (p *PostImageCheck) Payload(endpoint, method, path string) (*http.Request, error) {
 	values := url.Values{}
