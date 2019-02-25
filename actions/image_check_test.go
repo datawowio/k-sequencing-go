@@ -11,7 +11,7 @@ func TestGetImageCheckEndpoint(t *testing.T) {
 	g := &GetImageCheck{}
 	endpoint, method, path := g.Endpoint()
 	a.NotNil(t, endpoint)
-	a.Equal(t, config.KSeqAPIURL, endpoint)
+	a.Equal(t, config.KiyoImageAPIURL, endpoint)
 	a.NotNil(t, method)
 	a.Equal(t, "GET", method)
 	a.NotNil(t, path)
@@ -22,7 +22,7 @@ func TestGetListImageCheckEndpoint(t *testing.T) {
 	g := &GetImageChecks{}
 	endpoint, method, path := g.Endpoint()
 	a.NotNil(t, endpoint)
-	a.Equal(t, config.KSeqAPIURL, endpoint)
+	a.Equal(t, config.KiyoImageAPIURL, endpoint)
 	a.NotNil(t, method)
 	a.Equal(t, "GET", method)
 	a.NotNil(t, path)
@@ -33,7 +33,7 @@ func TestPostImageCheckEndpoint(t *testing.T) {
 	p := &PostImageCheck{}
 	endpoint, method, path := p.Endpoint()
 	a.NotNil(t, endpoint)
-	a.Equal(t, config.KSeqAPIURL, endpoint)
+	a.Equal(t, config.KiyoImageAPIURL, endpoint)
 	a.NotNil(t, method)
 	a.Equal(t, "POST", method)
 	a.NotNil(t, path)

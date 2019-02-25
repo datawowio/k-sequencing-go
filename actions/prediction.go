@@ -68,19 +68,19 @@ type PostPrediction struct {
 // Endpoint returns K Sequencing's request url, verb and endpoint for calling Get Image
 // Prediction API.
 func (*GetPrediction) Endpoint() (string, string, string) {
-	return config.KSeqAPIURL, "GET", "/api/prime/predictions"
+	return config.KiyoImageAPIURL, "GET", "/api/prime/predictions"
 }
 
 // Endpoint returns K Sequencing's request url, verb and endpoint for calling Get list of
 // Image Prediction API.
 func (*GetPredictions) Endpoint() (string, string, string) {
-	return config.KSeqAPIURL, "GET", "/api/prime/predictions"
+	return config.KiyoImageAPIURL, "GET", "/api/prime/predictions"
 }
 
 // Endpoint returns K Sequencing's request url, verb and endpoint for calling Create Image
 // Prediction API.
 func (*PostPrediction) Endpoint() (string, string, string) {
-	return config.KSeqAPIURL, "POST", "/api/prime/predictions"
+	return config.KiyoImageAPIURL, "POST", "/api/prime/predictions"
 }
 
 // Payload creates request's payload for Get Image Prediction API. Returns http.Request object.

@@ -72,19 +72,19 @@ type PostImageCheck struct {
 // Endpoint returns K Sequencing's request url, verb and endpoint for calling Get Image
 // Check API.
 func (*GetImageCheck) Endpoint() (string, string, string) {
-	return config.KSeqAPIURL, "GET", Path
+	return config.KiyoImageAPIURL, "GET", Path
 }
 
 // Endpoint returns K Sequencing's request url, verb and endpoint for calling Get list of
 // Image Check API.
 func (*GetImageChecks) Endpoint() (string, string, string) {
-	return config.KSeqAPIURL, "GET", Path
+	return config.KiyoImageAPIURL, "GET", Path
 }
 
 // Endpoint returns K Sequencing's request url, verb and endpoint for calling Create Image
 // Check API.
 func (*PostImageCheck) Endpoint() (string, string, string) {
-	return config.KSeqAPIURL, "POST", Path
+	return config.KiyoImageAPIURL, "POST", Path
 }
 
 // Payload creates request's payload for Get Image Check API. Returns http.Request

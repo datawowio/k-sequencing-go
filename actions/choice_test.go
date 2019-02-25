@@ -11,7 +11,7 @@ func TestPostChoiceEndpoint(t *testing.T) {
 	p := &PostChoice{}
 	endpoint, method, path := p.Endpoint()
 	a.NotNil(t, endpoint)
-	a.Equal(t, config.KSeqAPIURL, endpoint)
+	a.Equal(t, config.KiyoImageAPIURL, endpoint)
 	a.NotNil(t, method)
 	a.Equal(t, "POST", method)
 	a.NotNil(t, path)
@@ -22,7 +22,7 @@ func TestGetChoicesEndpoint(t *testing.T) {
 	g := &GetChoices{}
 	endpoint, method, path := g.Endpoint()
 	a.NotNil(t, endpoint)
-	a.Equal(t, config.KSeqAPIURL, endpoint)
+	a.Equal(t, config.KiyoImageAPIURL, endpoint)
 	a.NotNil(t, method)
 	a.Equal(t, "GET", method)
 	a.NotNil(t, path)
@@ -33,7 +33,7 @@ func TestGetChoiceEndpoint(t *testing.T) {
 	g := &GetChoice{}
 	endpoint, method, path := g.Endpoint()
 	a.NotNil(t, endpoint)
-	a.Equal(t, config.KSeqAPIURL, endpoint)
+	a.Equal(t, config.KiyoImageAPIURL, endpoint)
 	a.NotNil(t, method)
 	a.Equal(t, "GET", method)
 	a.NotNil(t, path)
