@@ -1,27 +1,24 @@
 package kseq
 
-// GetAiConsensus represents the response object that returned from Get Image Check
-// API. (GET `/api/images/check/:id`)
+// GetAiConsensus represents the response object that returned from Get AI Consensus API.
 type GetAiConsensus struct {
 	Data AiConsensusData `json:"data"`
 	Meta Meta            `json:"meta"`
 }
 
-// GetAiConsensuses represents the response object that returned from
-// Get List of Image Check API. (GET `/api/images/check`)
+// GetAiConsensuses represents the response object that returned from Get List of AI Consensus API.
 type GetAiConsensuses struct {
 	Data AiConsensuses `json:"data"`
 	Meta Meta          `json:"meta"`
 }
 
-// PostAiConsensus respresents the created object that returned from Create Image Check
-// API. (POST `/api/images/check`)
+// PostAiConsensus respresents the created object that returned from Create AI Consensus API.
 type PostAiConsensus struct {
 	Data AiConsensusData `json:"data"`
 	Meta Meta            `json:"meta"`
 }
 
-// AiConsensus represents Image Check object.
+// AiConsensus represents AI Consensus object.
 type AiConsensus struct {
 	ID            string  `json:"id"`
 	Answer        string  `json:"answer"`
@@ -34,12 +31,12 @@ type AiConsensus struct {
 	Status        string  `json:"status"`
 }
 
-// AiConsensuses represents list of ImageCheck object.
+// AiConsensuses represents list of AiConsensus object.
 type AiConsensuses struct {
 	Images []AiConsensus `json:"images"`
 }
 
-// AiConsensusData refers to ImageCheck object
+// AiConsensusData refers to AiConsensus object
 type AiConsensusData struct {
 	Image AiConsensus `json:"image"`
 }
