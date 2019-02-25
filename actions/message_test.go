@@ -11,7 +11,7 @@ func TestGetMessagesEndpoint(t *testing.T) {
 	g := &GetMessages{}
 	endpoint, method, path := g.Endpoint()
 	a.NotNil(t, endpoint)
-	a.Equal(t, config.KSeqAPIURL, endpoint)
+	a.Equal(t, config.KiyoImageAPIURL, endpoint)
 	a.NotNil(t, method)
 	a.Equal(t, "GET", method)
 	a.NotNil(t, path)
@@ -22,7 +22,7 @@ func TestGetMessageEndpoint(t *testing.T) {
 	g := &GetMessage{}
 	endpoint, method, path := g.Endpoint()
 	a.NotNil(t, endpoint)
-	a.Equal(t, config.KSeqAPIURL, endpoint)
+	a.Equal(t, config.KiyoImageAPIURL, endpoint)
 	a.NotNil(t, method)
 	a.Equal(t, "GET", method)
 	a.NotNil(t, path)
@@ -33,7 +33,7 @@ func TestPostMessage(t *testing.T) {
 	p := &PostMessage{}
 	endpoint, method, path := p.Endpoint()
 	a.NotNil(t, endpoint)
-	a.Equal(t, config.KSeqAPIURL, endpoint)
+	a.Equal(t, config.KiyoImageAPIURL, endpoint)
 	a.NotNil(t, method)
 	a.Equal(t, "POST", method)
 	a.NotNil(t, path)

@@ -75,19 +75,19 @@ type PostChoice struct {
 // Endpoint returns K Sequencing's request url, verb and endpoint for calling Get Image
 // Choice API.
 func (*GetChoice) Endpoint() (string, string, string) {
-	return config.KSeqAPIURL, "GET", "/api/images/choice"
+	return config.KiyoImageAPIURL, "GET", "/api/images/choice"
 }
 
 // Endpoint returns K Sequencing's request url, verb and endpoint for calling Get list of
 // Image Choice API.
 func (*GetChoices) Endpoint() (string, string, string) {
-	return config.KSeqAPIURL, "GET", "/api/images/choices"
+	return config.KiyoImageAPIURL, "GET", "/api/images/choices"
 }
 
 // Endpoint returns K Sequencing's request url, verb and endpoint for calling Create Image
 // Choice API.
 func (*PostChoice) Endpoint() (string, string, string) {
-	return config.KSeqAPIURL, "POST", "/api/images/choices"
+	return config.KiyoImageAPIURL, "POST", "/api/images/choices"
 }
 
 // Payload creates request's payload for Get Image Choice API. Returns http.Request object

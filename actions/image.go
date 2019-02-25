@@ -32,7 +32,7 @@ type GetImage struct {
 
 // Endpoint returns Get Image request url, verb and endpoint
 func (*GetImage) Endpoint() (string, string, string) {
-	return config.KSeqAPIURL, "GET", "/api/projects/images"
+	return config.KiyoImageAPIURL, "GET", "/api/projects/images"
 }
 
 // Payload creates request's payload for Get Image API. Returns http.Request object.
