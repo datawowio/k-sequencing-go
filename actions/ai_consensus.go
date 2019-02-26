@@ -67,7 +67,6 @@ type PostAiConsensus struct {
 	PostbackURL    string
 	PostbackMethod string
 	CustomID       string
-	Predictor      string
 }
 
 // Endpoint returns K Sequencing's request url, verb and endpoint for calling Get AI
@@ -138,9 +137,6 @@ func (p *PostAiConsensus) Payload(endpoint, method, path string) (*http.Request,
 	}
 	if p.CustomID != "" {
 		values.Set("custom_id", p.CustomID)
-	}
-	if p.Predictor != "" {
-		values.Set("predictor", p.Predictor)
 	}
 
 	body := strings.NewReader(values.Encode())
