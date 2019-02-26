@@ -29,6 +29,7 @@ type AiConsensus struct {
 	ProcessedAt   string  `json:"processed_at"`
 	ProjectID     int     `json:"project_id"`
 	Status        string  `json:"status"`
+	Mode          string  `json:"mode"`
 }
 
 // AiConsensuses represents list of AiConsensus object.
