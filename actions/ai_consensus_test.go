@@ -8,63 +8,36 @@ import (
 )
 
 func TestGetAiConsensusEndpoint(t *testing.T) {
-	standardAi := &GetAiConsensus{Predictor: "standard"}
-	endpoint, method, path := standardAi.Endpoint()
+	aiConsensus := &GetAiConsensus{}
+	endpoint, method, path := aiConsensus.Endpoint()
 	a.NotNil(t, endpoint)
 	a.Equal(t, config.KiyoImageAPIURL, endpoint)
 	a.NotNil(t, method)
 	a.Equal(t, "GET", method)
 	a.NotNil(t, path)
-	a.Equal(t, "/api/v1/jobs/nanameue/consensuses", path)
-
-	customAi := &GetAiConsensus{Predictor: "custom"}
-	endpoint, method, path = customAi.Endpoint()
-	a.NotNil(t, endpoint)
-	a.Equal(t, config.KiyoImageAPIURL, endpoint)
-	a.NotNil(t, method)
-	a.Equal(t, "GET", method)
-	a.NotNil(t, path)
-	a.Equal(t, "/api/v1/jobs/mirrativ/consensuses", path)
+	a.Equal(t, "/api/v1/jobs/ai/consensuses", path)
 }
 
 func TestGetListAiConsensusEndpoint(t *testing.T) {
-	standardAi := &GetAiConsensuses{Predictor: "standard"}
-	endpoint, method, path := standardAi.Endpoint()
+	aiConsensus := &GetAiConsensuses{}
+	endpoint, method, path := aiConsensus.Endpoint()
 	a.NotNil(t, endpoint)
 	a.Equal(t, config.KiyoImageAPIURL, endpoint)
 	a.NotNil(t, method)
 	a.Equal(t, "GET", method)
 	a.NotNil(t, path)
-	a.Equal(t, "/api/v1/jobs/nanameue/consensuses", path)
-
-	customAi := &GetAiConsensuses{Predictor: "custom"}
-	endpoint, method, path = customAi.Endpoint()
-	a.NotNil(t, endpoint)
-	a.Equal(t, config.KiyoImageAPIURL, endpoint)
-	a.NotNil(t, method)
-	a.Equal(t, "GET", method)
-	a.NotNil(t, path)
-	a.Equal(t, "/api/v1/jobs/mirrativ/consensuses", path)
+	a.Equal(t, "/api/v1/jobs/ai/consensuses", path)
 }
 
 func TestPostAiConsensusEndpoint(t *testing.T) {
-	standardAi := &PostAiConsensus{Predictor: "standard"}
-	endpoint, method, path := standardAi.Endpoint()
+	aiConsensus := &PostAiConsensus{}
+	endpoint, method, path := aiConsensus.Endpoint()
 	a.NotNil(t, endpoint)
 	a.Equal(t, config.KiyoImageAPIURL, endpoint)
 	a.NotNil(t, method)
 	a.Equal(t, "POST", method)
 	a.NotNil(t, path)
-	a.Equal(t, "/api/v1/jobs/nanameue/consensuses", path)
-
-	customAi := &PostAiConsensus{Predictor: "custom"}
-	endpoint, method, path = customAi.Endpoint()
-	a.NotNil(t, endpoint)
-	a.Equal(t, config.KiyoImageAPIURL, endpoint)
-	a.NotNil(t, method)
-	a.Equal(t, "POST", method)
-	a.NotNil(t, path)
-	a.Equal(t, "/api/v1/jobs/mirrativ/consensuses", path)
+	a.Equal(t, "/api/v1/jobs/ai/consensuses", path)
 }
 
 func TestGetAiConsensusPayload(t *testing.T) {

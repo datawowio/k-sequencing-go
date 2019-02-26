@@ -10,8 +10,7 @@ import (
 )
 
 const (
-	StandardAiConsensusPath = "/api/v1/jobs/nanameue/consensuses"
-	CustomedAiConsensusPath = "/api/v1/jobs/mirrativ/consensuses"
+	AiConsensusPath = "/api/v1/jobs/ai/consensuses"
 )
 
 // Example:
@@ -27,8 +26,7 @@ const (
 //  fmt.Printf("AI Consensus: %#v\n", imgData)
 //
 type GetAiConsensus struct {
-	ID        string
-	Predictor string
+	ID string
 }
 
 // Example:
@@ -47,10 +45,9 @@ type GetAiConsensus struct {
 //  fmt.Printf("First element: %#v\n", list.Data.Images[0])
 //
 type GetAiConsensuses struct {
-	ID        string
-	Page      string
-	Item      string
-	Predictor string
+	ID   string
+	Page string
+	Item string
 }
 
 // Example:
@@ -76,37 +73,19 @@ type PostAiConsensus struct {
 // Endpoint returns K Sequencing's request url, verb and endpoint for calling Get AI
 // Consensus API.
 func (g *GetAiConsensus) Endpoint() (string, string, string) {
-	if g.Predictor == "standard" {
-		return config.KiyoImageAPIURL, "GET", StandardAiConsensusPath
-	}
-	if g.Predictor == "custom" {
-		return config.KiyoImageAPIURL, "GET", CustomedAiConsensusPath
-	}
-	return "", "", ""
+	return config.KiyoImageAPIURL, "GET", AiConsensusPath
 }
 
 // Endpoint returns K Sequencing's request url, verb and endpoint for calling Get list of
 // AI Consensus API.
 func (g *GetAiConsensuses) Endpoint() (string, string, string) {
-	if g.Predictor == "standard" {
-		return config.KiyoImageAPIURL, "GET", StandardAiConsensusPath
-	}
-	if g.Predictor == "custom" {
-		return config.KiyoImageAPIURL, "GET", CustomedAiConsensusPath
-	}
-	return "", "", ""
+	return config.KiyoImageAPIURL, "GET", AiConsensusPath
 }
 
 // Endpoint returns K Sequencing's request url, verb and endpoint for calling Create AI
 // Consensus API.
 func (p *PostAiConsensus) Endpoint() (string, string, string) {
-	if p.Predictor == "standard" {
-		return config.KiyoImageAPIURL, "POST", StandardAiConsensusPath
-	}
-	if p.Predictor == "custom" {
-		return config.KiyoImageAPIURL, "POST", CustomedAiConsensusPath
-	}
-	return "", "", ""
+	return config.KiyoImageAPIURL, "POST", AiConsensusPath
 }
 
 // Payload creates request's payload for Get AI Consensus API. Returns http.Request
@@ -159,6 +138,9 @@ func (p *PostAiConsensus) Payload(endpoint, method, path string) (*http.Request,
 	}
 	if p.CustomID != "" {
 		values.Set("custom_id", p.CustomID)
+	}
+	if p.Predictor != "" {
+		values.Set("predictor", p.Predictor)
 	}
 
 	body := strings.NewReader(values.Encode())
