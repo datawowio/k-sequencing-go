@@ -567,6 +567,85 @@ if err := client.Call(imgData, post); err != nil {
 fmt.Printf("Image Check: %#v\n", imgData)
 ```
 
+## Image AI with Consensus
+
+### Get AI Consensus by ID
+
+###### Payload
+```go
+type GetAiConsensus struct {
+	  ID string // Image's ID or Custom ID
+}
+```
+
+###### Example
+```go
+imgData, get := &kseq.GetAiConsensus{}, &actions.AiConsensus{
+    ID: "5a546e916e11571f570c1533",
+}
+
+if err := client.Call(imgData, get); err != nil {
+    log.Fatal(err)
+}
+
+fmt.Printf("AI Consensus: %#v\n", imgData)
+```
+
+### Get list of Image Check
+
+###### Payload
+```go
+type GetAiConsensuses struct {
+	  ID   string // optional, `ID` could be either Image's ID or CustomID
+	  Page string // optional, The number of page
+	  Item string // optional, The number of items per page
+}
+```
+
+###### Example
+```go
+list, get := &kseq.GetAiConsensuses{}, &actions.GetAiConsensuses{
+    ID:   "5a546e916e11571f570c1533",
+    Page: "1",
+    Item: "20",
+}
+
+if err := client.Call(list, get); err != nil {
+    log.Fatal(err)
+}
+
+fmt.Printf("AI Consensus: %#v\n", list)
+fmt.Printf("First element: %#v\n", list.Data.Images[0])
+```
+
+### Create AI Consensus
+
+###### Payload
+```go
+type PostAiConsensus struct {
+	  Data           string // required, Input image url to moderate
+	  PostbackURL    string // optional, Image postback url
+	  PostbackMethod string // optional, Postback's http method
+	  CustomID       string // optional, Customized ID
+}
+```
+
+###### Example
+```go
+imgData, post := &kseq.PostAiConsensus{}, &actions.PostAiConsensus{
+    Data: TestImageDataURL,
+    PostbackURL: TestURL,
+    PostbackMethod: "GET",
+    CustomID: "Example",
+}
+
+if err := client.Call(imgData, post); err != nil {
+    log.Fatal(err)
+}
+
+fmt.Printf("AI Consensus: %#v\n", imgData)
+```
+
 [0]: http://datawow.io
 [1]: https://godoc.org/github.com/datawowio/k-sequencing-go
 [2]: https://circleci.com/gh/datawowio/k-sequencing-go
