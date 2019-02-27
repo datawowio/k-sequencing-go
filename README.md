@@ -591,7 +591,7 @@ if err := client.Call(imgData, get); err != nil {
 fmt.Printf("AI Consensus: %#v\n", imgData)
 ```
 
-### Get list of Image Check
+### Get list of AI Consensus
 
 ###### Payload
 ```go
@@ -644,6 +644,66 @@ if err := client.Call(imgData, post); err != nil {
 }
 
 fmt.Printf("AI Consensus: %#v\n", imgData)
+```
+
+## Document Verification
+
+### Get Document Verification by ID
+
+###### Payload
+```go
+type DocumentVerificationGet struct {
+    ID string // Image's ID or Custom ID
+}
+```
+
+###### Example
+```go
+document, get := &kseq.DocumentVerificationGet{}, &actions.DocumentVerificationGetParams{
+    ID: "5a546e916e1",
+}
+
+if err := client.Call(document, get); err != nil {
+    log.Fatal(err)
+}
+
+fmt.Printf("Document Verification: %#v\n", document)
+```
+
+### Create Document Verification
+
+###### Payload
+```go
+type DocumentVerificationParams struct {
+    Data           string // required, Input image url to moderate
+    Info           map[string]map[string]string // required, Document Information
+    PostbackURL    string // optional, Image postback url
+    PostbackMethod string // optional, Postback's http method
+    CustomID       string // optional, Customized ID
+}
+```
+
+###### Example
+```go
+var info = map[string]map[string]string{
+    "type": map[string]string{
+       "value": "driver_license"},
+    "dob": map[string]string{
+       "value": "1991/11/28"},
+}
+
+document, postDoc := &kseq.DocumentVerificationCreate{}, &actions.DocumentVerificationParams{
+    Data:           "https://sample-image.png",
+    Info:           info,
+    PostbackURL:    "http://localhost:3000",
+    PostbackMethod: "GET",
+}
+
+if err := c.Call(doc, postDoc); err != nil {
+    log.Fatal(err)
+}
+
+fmt.Printf("Document Verification: %#v\n", document)
 ```
 
 [0]: http://datawow.io
