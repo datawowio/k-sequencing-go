@@ -574,7 +574,7 @@ fmt.Printf("Image Check: %#v\n", imgData)
 ###### Payload
 ```go
 type DocumentVerificationGet struct {
-	  ID string // Image's ID or Custom ID
+    ID string // Image's ID or Custom ID
 }
 ```
 
@@ -596,32 +596,32 @@ fmt.Printf("Document Verification: %#v\n", document)
 ###### Payload
 ```go
 type DocumentVerificationParams struct {
-	  Data           string // required, Input image url to moderate
+    Data           string // required, Input image url to moderate
     Info           map[string]map[string]string // required, Document Information
-	  PostbackURL    string // optional, Image postback url
-	  PostbackMethod string // optional, Postback's http method
-	  CustomID       string // optional, Customized ID
+    PostbackURL    string // optional, Image postback url
+    PostbackMethod string // optional, Postback's http method
+    CustomID       string // optional, Customized ID
 }
 ```
 
 ###### Example
 ```go
 var info = map[string]map[string]string{
-  "type": map[string]string{
-    "value": "driver_license"},
-  "dob": map[string]string{
-    "value": "1991/11/28"},
+    "type": map[string]string{
+       "value": "driver_license"},
+    "dob": map[string]string{
+       "value": "1991/11/28"},
 }
 
 document, postDoc := &kseq.DocumentVerificationCreate{}, &actions.DocumentVerificationParams{
-  Data:           "https://sample-image.png",
-  Info:           info,
-  PostbackURL:    "http://localhost:3000",
-  PostbackMethod: "GET",
+    Data:           "https://sample-image.png",
+    Info:           info,
+    PostbackURL:    "http://localhost:3000",
+    PostbackMethod: "GET",
 }
 
 if err := c.Call(doc, postDoc); err != nil {
-  log.Fatal(err)
+    log.Fatal(err)
 }
 
 fmt.Printf("Document Verification: %#v\n", document)
