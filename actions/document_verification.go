@@ -79,10 +79,10 @@ func (p *DocumentVerificationParams) Payload(endpoint, method, path string) (*ht
 func createKeyValuePairs(m map[string]map[string]string) []string {
 	var kv []string
 	for key, value := range m {
-		for _, v := range value {
+		for k, v := range value {
 			kv = append(
 				kv,
-				fmt.Sprintf(`%q: {"value": %q}`, key, v),
+				fmt.Sprintf(`%q: {%q: %q}`, key, k, v),
 			)
 		}
 	}
